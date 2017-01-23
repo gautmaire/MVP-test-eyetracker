@@ -10,3 +10,15 @@ p {
   word-spacing: 5px;
   line-height: 55px;
 }
+
+#span{
+  font-size: 28px;
+  word-spacing: 5px;
+  line-height: 55px;
+  display: inline;
+  margin-left: 500px;
+}
+
+#pTest{
+  display: inline;
+}

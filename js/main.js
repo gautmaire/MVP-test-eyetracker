@@ -1,20 +1,7 @@
-function getPosition(element)
+function mouse_position(event)
 {
-	var left = 0;
-	var top = 0;
-	/*On récupère l'élément*/
-	var e = document.getElementById(element);
-	/*Tant que l'on a un élément parent*/
-	while (e.offsetParent != undefined && e.offsetParent != null)
-	{
-		/*On ajoute la position de l'élément parent*/
-		left += e.offsetLeft + (e.clientLeft != null ? e.clientLeft : 0);
-		top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);
-		e = e.offsetParent;
-	}
-	return new Array(left,top);
+	console.log("CA MARCHE");
 }
-
 
 $( function() {
 

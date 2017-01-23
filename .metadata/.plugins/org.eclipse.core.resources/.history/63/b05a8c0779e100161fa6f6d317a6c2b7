@@ -1,0 +1,11 @@
+public class Mot {
+	private int x;
+	private int y;
+	private String mot;
+	
+	public Mot(int x, int y, String mot){
+		this.x = x;
+		this.y = y;
+		this.mot = mot;
+	}
+}

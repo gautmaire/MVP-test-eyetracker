@@ -27,18 +27,22 @@ public class EyeTracker extends JFrame {
 		
 	public void PositionMot(Container parent) {
 		Component[] all = parent.getComponents();
-		System.out.println("Position des mots");
 		for (Component c : all) {
-			ListeMot.add(new Mot(c.getX(), c.getY(), ((JLabel)c).getText()));
-			System.out.println(((JLabel)c).getText());
-			System.out.println("X: " + c.getX() + " Y: " + c.getY());
+			if(!(((JLabel)c).getText().equals(",")) && (!((JLabel)c).getText().equals(".")) && (!((JLabel)c).getText().equals("?")) && (!((JLabel)c).getText().equals("!")))  {
+				ListeMot.add(new Mot(c.getX(), c.getY(), ((JLabel)c).getText()));
+			}
 		}
 	}
 		
 	private void CliqueSouris(JPanel panel) {
 		panel.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				System.out.println(e.getX() + "," + e.getY());
+				for(int i = 0; i < ListeMot.size(); i++) {
+					int nbrelettre = ListeMot.get(i).getMot().length() * 6;
+					if(e.getX() - ListeMot.get(i).getX() >= 0 && e.getX() - ListeMot.get(i).getX() <= nbrelettre && e.getY() - ListeMot.get(i).getY() >= 0 && e.getY() - ListeMot.get(i).getY() <= 13) {
+						System.out.println("Vous avez cliqué sur le mot: " + ListeMot.get(i).getMot());
+					}
+				}
 			}
 		});
 	}
@@ -57,15 +61,14 @@ public class EyeTracker extends JFrame {
 						texte += (char)bit;
 					}
 					else {
-						System.out.println(texte);
 						p.add(new JLabel(texte));
 						texte = "";
 					}
 				}
 				buffer = new byte[8];
 			}
+			texte = texte.substring(0, texte.length() - 3);
 			p.add(new JLabel(texte));
-			System.out.println("Copie terminÃ©e !");
 		} catch(FileNotFoundException e) {
 			e.printStackTrace();
 		} catch(IOException e) {
@@ -91,7 +94,7 @@ public class EyeTracker extends JFrame {
 		
 	private void CreateJFrame() {
 		setTitle("Affichage du texte");
-		setSize(320,240); 
+		setSize(1500,800); 
 		setLocationRelativeTo(null); 
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
@@ -99,13 +102,7 @@ public class EyeTracker extends JFrame {
 	}
 		
 	public static void main(String[]args) {
-		EyeTracker fenÃªtre = new EyeTracker();
-		fenÃªtre.setVisible(true);
-		
-		for(int i = 0; i < ListeMot.size(); i++) {
-			System.out.println(ListeMot.get(i).getX());
-			System.out.println(ListeMot.get(i).getY());
-			System.out.println(ListeMot.get(i).getMot());
-		}
+		EyeTracker fenêtre = new EyeTracker();
+		fenêtre.setVisible(true);
 	}
 }

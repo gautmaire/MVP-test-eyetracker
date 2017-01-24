@@ -1,7 +1,7 @@
-function mouse_position(event)
+/**function mouse_position(event)
 {
 	console.log("CA MARCHE");
-}
+}*/
 
 $( function() {
 
@@ -14,3 +14,4 @@ $( function() {
 	alert('x : '+posP2[0]+' / y : '+posP2[1]);
 
 });
+

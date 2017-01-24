@@ -30,6 +30,7 @@
             y: event.pageY
         };
     }
+
     function getMousePosition() {
         var pos = mousePos;
         if (!pos) {
@@ -39,5 +40,6 @@
             console.log("Position", pos);
         }
     }
+
 })();
 

@@ -80,7 +80,12 @@
 //
 // 	alert(chaineAfter);
 // });
-
+//
+//
+//	/* ----------------------------------
+// METHODE QUI FONCTION POUR L'AJOUT DES SPAN
+//	---------------------------------- */
+//
 $( function(){
 	var words = $("#testChaine").text().split(" ");
 	$("#testChaine").empty();

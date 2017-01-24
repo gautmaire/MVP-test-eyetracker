@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
     var mousePos;
 
     document.onmousemove = handleMouseMove;
@@ -41,5 +41,5 @@
         }
     }
 
-})();
+})();*/
 

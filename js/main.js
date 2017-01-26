@@ -10,7 +10,7 @@ var text = $("p").text();
 var words = text.split(" ");
 var wordsBB = new Array(words.length);
 
-ctx.font = "14px arial";
+ctx.font = "30px arial";
 
 var length = ctx.measureText(words[0]).width;
 
@@ -18,7 +18,7 @@ wordsBB[0] = {
     x: 0,
     y: 0,
     width: length,
-    height: 16
+    height: 200
 }
 
 var accumLength = length;
@@ -29,12 +29,12 @@ for (var i = 1; i < words.length; i++) {
         x: accumLength,
         y: 0,
         width: length,
-        height: 16
+        height: 200
     }
     accumLength += length;
 }
 
-ctx.fillText(text, 0, 15);
+ctx.fillText(text, 0, 30);
 ctx.lineWidth = 0.50;
 
 

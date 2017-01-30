@@ -87,11 +87,11 @@
 //  ---------------------------------- */
 //
 $( function(){
-    var words = $("#testChaine").text().split(" ");
-    $("#testChaine").empty();
+    var words = $("#pTest").text().split(" ");
+    $("#pTest").empty();
     $.each(words, function(i, v) {
-        $("#testChaine").append($("<span>").text(v));
-        $("#testChaine").append(" ");
+        $("#pTest").append($("<span>").text(v));
+        $("#pTest").append(" ");
     });
 });
 
@@ -102,7 +102,8 @@ $( function(){
 //
 $( function(){
     $("span").mouseover( function(){
-        $(this).css("background", "#40A497");
+        $(this).css("color", "#F6CD61");
     });
 
 });
+

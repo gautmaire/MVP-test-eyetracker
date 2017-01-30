@@ -9,21 +9,38 @@ h1, h2, h3, p{
 
 h1{
   font-size: 1.8em;
+  text-align: center;
 }
 
 h2{
   text-align: center;
+  margin-bottom: 40px;
+}
+
+p{
+	text-align: justify;
+	font-size: 1.6em;
+	line-height: 2em;
+	margin-top: 50px;
 }
 
 header{
   border-bottom: 2px solid #4A4E4D;
+  padding: 30px 0;
 }
 
 header img{
-  width: 150px;
-  height: auto;
-  margin: 10px 25px 25px 0px;
+	width: 145px;
 }
+
+#contenu{
+	padding: 30px 40px;
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+
 
 
 

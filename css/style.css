@@ -5,12 +5,6 @@ div {
   margin-left: 10%
 }
 
-p {
-  font-size: 28px;
-  word-spacing: 5px;
-  line-height: 55px;
-}
-
 #span{
   font-size: 28px;
   word-spacing: 5px;
@@ -21,4 +15,51 @@ p {
 
 #pTest{
   display: inline;
+}
+
+
+body{
+  margin: 10px 10%;
+}
+
+header{
+  border-bottom: 2px solid #4A4E4D;
+}
+
+img{
+  width: 25%;
+  height: auto;
+  float: left;
+  margin: 10px 25px 25px 0px;
+}
+
+h1{
+  float: left;
+    width: 70%;
+    padding-left: 25px;
+    padding-top: 55px;
+    font-family: Arial;
+    color: #4A4E4D;
+}
+
+h2, p{
+  font-family: Arial;
+}
+
+.clear{
+  clear: both;
+}
+
+#canvas{
+  clear: both;
+  text-align: justify;
+}
+
+#canvas h2{
+  text-align: center;
+}
+
+#canvas p{
+  line-height: 1.5em;
+  font-size: 1.6em;
 }

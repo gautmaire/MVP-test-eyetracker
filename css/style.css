@@ -1,65 +1,30 @@
-div {
-  width: 80%;
-  height: 100%;
-  margin-top: 5%;
-  margin-left: 10%
-}
-
-#span{
-  font-size: 28px;
-  word-spacing: 5px;
-  line-height: 55px;
-  display: inline;
-  margin-left: 500px;
-}
-
-#pTest{
-  display: inline;
-}
-
-
 body{
   margin: 10px 10%;
+}
+
+h1, h2, h3, p{
+  font-family: Arial;
+  color: #4A4E4D;
+}
+
+h1{
+  font-size: 1.8em;
+}
+
+h2{
+  text-align: center;
 }
 
 header{
   border-bottom: 2px solid #4A4E4D;
 }
 
-img{
-  width: 25%;
+header img{
+  width: 150px;
   height: auto;
-  float: left;
   margin: 10px 25px 25px 0px;
 }
 
-h1{
-  float: left;
-    width: 70%;
-    padding-left: 25px;
-    padding-top: 55px;
-    font-family: Arial;
-    color: #4A4E4D;
-}
 
-h2, p{
-  font-family: Arial;
-}
 
-.clear{
-  clear: both;
-}
 
-#canvas{
-  clear: both;
-  text-align: justify;
-}
-
-#canvas h2{
-  text-align: center;
-}
-
-#canvas p{
-  line-height: 1.5em;
-  font-size: 1.6em;
-}

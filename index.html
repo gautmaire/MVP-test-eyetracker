@@ -17,18 +17,19 @@ h1, h2, h3, p{
 }
 
 h1{
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: center;
 }
 
 h2{
+  font-size: 1.8em;
   text-align: center;
   margin-bottom: 40px;
 }
 
 p{
     text-align: justify;
-    font-size: 1.6em;
+    font-size: 1.8em;
     line-height: 2em;
     margin-top: 50px;
 }
@@ -66,6 +67,7 @@ header img{
 		<section>
 			<ul id="right"></ul>
         	<ul id="left"></ul>
+            <ul id="count">Nombre de mots : </ul>
 			<!-- <p>Mot lus : <span id="results">---</span></p> -->
 			<div id="contenu words" width="800" height="400">
 			
@@ -177,8 +179,8 @@ $( function(){
                 r.style.visibility = "hidden";
                 
                 var x = document.getElementById('cursor');
-                x.style.position = "absolute";
-                x.style.visibility = "hidden";
+                x.style.position = "absolute";/*
+                x.style.visibility = "hidden";*/
 
 
                 // OEIL GAUCHE
@@ -249,9 +251,10 @@ $( function(){
 
                 $('#right').empty().append($('<li>').text("Right Eye : x : "+averageRightX+"   y :  "+averageRightY));
                 $('#left').empty().append($('<li>').text("Left Eye : x : "+averageLeftX+"   y :  "+averageLeftY));
+                $('#count').empty().append($('<li>').text("Nombre de mots lus : "+ wordsReaden.length+""));
 
                 // DISTANCE MAX ENTRE LE CURSEUR X ET L'ELEMENT
-                distMax = 30;
+                distMax = 35;
 
                 // ON RECUPERE DANS UN TABLEAU WORDS, TOUS LES MOTS DE CLASSE "WORD"
                 words = document.getElementsByTagName("span");
@@ -277,7 +280,9 @@ $( function(){
                         colR = Math.round(255 * coef);
                         colB = Math.round(255 * (1 - coef));*/
                         currentWord.style.color = "rgb(246,205,97)"; 
-                        wordsReaden.push(currentWord);
+                        if (wordsReaden.indexOf(currentWord) === -1)
+                            wordsReaden.push(currentWord);
+
                     }
                 }
             };

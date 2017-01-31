@@ -6,7 +6,7 @@ var canvasOffset = $canvas.offset();
 var offsetX = canvasOffset.left;
 var offsetY = canvasOffset.top;
 
-var text = $("p").text();
+var text = $("canvas p").text();
 var words = text.split(" ");
 var wordsBB = new Array(words.length);
 

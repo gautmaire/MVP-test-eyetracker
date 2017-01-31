@@ -1,24 +1,48 @@
-div {
-  width: 80%;
-  height: 100%;
-  margin-top: 5%;
-  margin-left: 10%
-}
+/** CODE GENERAL **/
+/* Header */
+	header{
+	  background: #efefef;
+	}
 
-p {
-  font-size: 28px;
-  word-spacing: 5px;
-  line-height: 55px;
-}
+	h1 img{
+		
+	}
 
-#span{
-  font-size: 28px;
-  word-spacing: 5px;
-  line-height: 55px;
-  display: inline;
-  margin-left: 500px;
-}
+/* div (section + aside) */
+	div{
+	  background: #0E9AA7;
+	}
 
-#pTest{
-  display: inline;
-}
+	aside, section{
+	  background: white; 
+	  border: 1px solid grey;
+	}
+
+	section{
+		padding: 0;
+	}
+
+	nav ul{
+	  color: black;
+	}
+	nav ul li{
+		list-style-type: none;
+	}
+	nav ul li a {
+		color: black;
+	}
+
+/* Footer */
+	footer{
+	  background: #0E9AA7;
+	  text-align: center;
+	  color: white;
+	}
+
+/* Style de texte */
+	h2{
+	  color: white;
+	  background-color: #4A4E4D;
+	  margin: 0;
+	  padding: 0;
+	}

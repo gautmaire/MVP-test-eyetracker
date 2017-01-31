@@ -1,11 +1,21 @@
 /** CODE GENERAL **/
+/* font */
+@font-face {
+	font-family: 'quicksand';
+	src: url('fonts/quicksand/Quicksand_Dash.otf');
+	src: url('fonts/quicksand/Quicksand-Bold.otf');
+	src: url('fonts/quicksand/Quicksand-BoldItalic.otf');
+	src: url('fonts/quicksand/Quicksand-Italic.otf');
+	src: url('fonts/quicksand/Quicksand-Light.otf');
+	src: url('fonts/quicksand/Quicksand-LightItalic.otf');
+	src: url('fonts/quicksand/Quicksand-Regular.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* Header */
 	header{
 	  background: #efefef;
-	}
-
-	h1 img{
-		
 	}
 
 /* div (section + aside) */
@@ -45,4 +55,5 @@
 	  background-color: #4A4E4D;
 	  margin: 0;
 	  padding: 0;
+	  font-family: 'quicksand';
 	}

@@ -6,18 +6,68 @@
 		<title>Démonstration See2Learn</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
+        <style type="text/css">
+            body{
+  margin: 10px 10%;
+}
+
+h1, h2, h3, p{
+  font-family: Arial;
+  color: #4A4E4D;
+}
+
+h1{
+  font-size: 1.8em;
+  text-align: center;
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+p{
+    text-align: justify;
+    font-size: 1.6em;
+    line-height: 2em;
+    margin-top: 50px;
+}
+
+header{
+  border-bottom: 2px solid #4A4E4D;
+  padding: 30px 0;
+}
+
+header img{
+    width: 145px;
+}
+
+#contenu{
+    padding: 30px 40px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+        </style>
 	</head>
 	<body>
 		<header class="row">
 			<div class="col-xs-4 col-sm-3 col-md-2">
-				<img src="img/logo.png" alt="logo_See2Learn">
+				<!-- <img src="img/logo.png" alt="logo_See2Learn"> -->
 			</div>
 			<h1 class="col-xs-8 col-sm-9 col-md-10">Page de démonstration de lecture avec l'Eye Tracker</h1>
 		</header>
 
+		<div id="cursorL">L</div>
+        <div id="cursorR">R</div>
+        <div id="cursor">X</div>
+
 		<section>
-			<p>Mot lus : <span id="results">---</span></p>
-			<div id="contenu" width="800" height="400">
+			<ul id="right"></ul>
+        	<ul id="left"></ul>
+			<!-- <p>Mot lus : <span id="results">---</span></p> -->
+			<div id="contenu words" width="800" height="400">
 			
 				<h2 id="titre">La voiture volante d’Airbus</h2>
 
@@ -28,8 +78,266 @@
 				<p id="pTest2">Faut-il entendre qu’en 2020, les premiers modèles de voitures volantes arriveront sur le marché ? Techniquement, il est probable que oui, car Airbus n’est pas seul dans cette course et on peut citer des dizaines de sociétés œuvrant sur ce futur marché, comme par exemple le drone voiture Ehang 184 présenté l’année dernière au CES ou encore les véhicules de Joby Aviation. En revanche là où les entreprises pourraient se frotter à un mur, c’est au niveau législatif car on voit actuellement toutes les difficultés réglementaires qui existent autour des drones, on peut facilement imaginer le casse-tête que seront les voitures volantes pour les autorités.</p>
 			</div>
 		</section>
-		<script src="js/jquery.js"></script>
+		<!-- <script src="js/jquery.js"></script> -->
+
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+
 		<script src="js/main.js"></script>
 		<script src="js/mouse-position.js"></script>
+
+		<script type="text/javascript">
+                
+//
+//  /* ----------------------------------
+// METHODE QUI FONCTION POUR L'AJOUT DES SPAN
+//  ---------------------------------- */
+//
+$( function(){
+    var words = $("#pTest").text().split(" ");
+    $("#pTest").empty();
+    $.each(words, function(i, v) {
+        $("#pTest").append($("<span>").text(v));
+        $("#pTest").append(" ");
+    });
+
+    var words = $("#pTest1").text().split(" ");
+    $("#pTest1").empty();
+    $.each(words, function(i, v) {
+        $("#pTest1").append($("<span>").text(v));
+        $("#pTest1").append(" ");
+    });
+
+    var words = $("#pTest2").text().split(" ");
+    $("#pTest2").empty();
+    $.each(words, function(i, v) {
+        $("#pTest2").append($("<span>").text(v));
+        $("#pTest2").append(" ");
+    });
+});
+
+
+
+
+
+        // ****************************
+            // code pour eye Tracker
+        // ****************************
+            var socket;
+        
+            //Outdated array names, not last ten, but last cursorUpdateRate
+            var lastTenLeftX = [];
+            var lastTenLeftY = [];
+            var lastTenRightX = [];
+            var lastTenRightY = [];
+            var wordsReaden = [];
+
+            var cursorUpdateRate = 50;
+            var offsetX= 0;
+            var offsetY= 0;
+
+        //Euclidian distance between cursor and an element e
+        function distToElement(x, y, e){
+            var rect = e.getBoundingClientRect();
+            var avX = (rect.left+rect.right)/2;
+            var avY = (rect.top+rect.bottom)/2;
+
+            return Math.sqrt((avX-x)*(avX-x) + (avY-y)*(avY-y));
+        }
+
+        $(document).ready(function(){
+
+            window.onmousemove = function(e){
+                offsetX = -1 * (e.clientX-e.screenX);
+                offsetY = -1 * (e.clientY-e.screenY);
+            };
+            socket = io();
+
+            function update() {
+
+                socket.emit('updateRequest', $('#m').val());
+                $('#m').val('');
+                return false;
+
+            }
+            
+            
+            setInterval(update, 1);//Ask server for update every 1ms
+            setInterval(updateCursor, cursorUpdateRate);//Refresh the cursor position every "cursorUpdateRate" ms
+
+            function updateCursor(){
+
+                // ON RECUPERE LES DIV DE L'OEIL DROIT, GAUCHE ET LE CURSEUR X DU MILIEU
+                var l = document.getElementById('cursorL');
+                l.style.position = "absolute";
+                l.style.visibility = "hidden";
+
+                var r = document.getElementById('cursorR');
+                r.style.position = "absolute";
+                r.style.visibility = "hidden";
+                
+                var x = document.getElementById('cursor');
+                x.style.position = "absolute";
+                x.style.visibility = "hidden";
+
+
+                // OEIL GAUCHE
+                var averageLeftX = 0;
+                var averageLeftY = 0;
+                var averageRightX = 0;
+                var averageRightY = 0;
+                
+                // ON RECUPERE LES DIX DERNIERS VALEURS, EN X ET EN Y DE L'OEIL GAUCHE
+                for(i=0 ; i < lastTenLeftX.length ; i++){
+                    averageLeftX += lastTenLeftX[i];
+                }
+
+
+                for(i=0 ; i < lastTenLeftY.length ; i++){
+                    averageLeftY += lastTenLeftY[i];
+                }
+
+                // ON FAIT LA MOYENNE DES DIX DERNIERES VALEURS
+
+                averageLeftX = averageLeftX/lastTenLeftX.length;
+                averageLeftY = averageLeftY/lastTenLeftY.length;
+
+                // ON FAIT LE RAPPORT ENTRE LA MOYENNE + LA TAILLE DE L'ECRAN
+
+                var leftX = averageLeftX*screen.width-offsetX;
+                var leftY = averageLeftY*screen.height-offsetY;
+
+                // ON DEPLACE LE CURSEUR "L" DE LEFTXPX ET LEFTYPX DANS LE CSS (STYLE)
+
+                l.style.left = (leftX)+'px';
+                l.style.top = (leftY)+'px';      
+
+
+                // C'EST EXACTEMENT LA MEME CHOSE POUR L'OEIL DROIT
+
+                for(i=0 ; i < lastTenRightX.length ; i++){
+                    averageRightX += lastTenRightX[i];
+                }
+
+
+                for(i=0 ; i < lastTenRightY.length ; i++){
+                    averageRightY += lastTenRightY[i];
+                }
+
+
+                averageRightX = averageRightX/lastTenRightX.length;
+                averageRightY = averageRightY/lastTenRightY.length;
+
+
+                var rightX = averageRightX*screen.width-offsetX;
+                var rightY = averageRightY*screen.height-offsetY;
+
+                // ON DEPLACE LE CURSEUR "L" DE LEFTXPX ET LEFTYPX DANS LE CSS (STYLE)
+
+                r.style.left = (rightX)+'px';
+                r.style.top = (rightY)+'px';      
+
+                // ON DEPLACE LE CURSEUR "X" DE LA MOYENNE DES COORDS DE L'OEIL GAUCHE ET DROIT (STYLE)
+
+                var avgLRX = (rightX+leftX)/2;
+                var avgLRY = (rightY+leftY)/2;
+                x.style.left = (avgLRX)+'px';
+                x.style.top = (avgLRY)+'px';      
+
+
+                // ICI ON AFFICHE EN HAUT A GAUCHE LES COORDONNES EN X ET EN Y
+
+                $('#right').empty().append($('<li>').text("Right Eye : x : "+averageRightX+"   y :  "+averageRightY));
+                $('#left').empty().append($('<li>').text("Left Eye : x : "+averageLeftX+"   y :  "+averageLeftY));
+
+                // DISTANCE MAX ENTRE LE CURSEUR X ET L'ELEMENT
+                distMax = 30;
+
+                // ON RECUPERE DANS UN TABLEAU WORDS, TOUS LES MOTS DE CLASSE "WORD"
+                words = document.getElementsByTagName("span");
+
+                // ON PARCOURS TOUS LES MOTS DU TABLEAU
+                for(i = 0; i < words.length; i++)
+                {
+                    // ON RECUPERE LE MOT EN COURS
+                    currentWord = words[i];
+                    
+                    // d --> DISTANCE EUCLIDIENNE ENTRE LE CURSEUR (X) ET L'ELEMENT E
+                    d = distToElement(avgLRX, avgLRY, currentWord);
+
+                    // SI LA DISTANCE EUCLIDIENNE EST SUPERIEUR A LA DISTANCE MAX AUTORISEE
+                    if(parseInt(d) > parseInt(distMax))
+                    {
+                        if (wordsReaden.indexOf(currentWord) === -1)
+                            currentWord.style.color = "rgb(0,0,0)"; 
+                    }   
+                    else
+                    {
+                       /* coef = -1* (d - distMax)/distMax;
+                        colR = Math.round(255 * coef);
+                        colB = Math.round(255 * (1 - coef));*/
+                        currentWord.style.color = "rgb(246,205,97)"; 
+                        wordsReaden.push(currentWord);
+                    }
+                }
+            };
+
+            
+        //When data received from the server
+        socket.on('coordinates', function(leftX, leftY, rightX, rightY){
+
+            lastTenLeftX.unshift(leftX);
+            lastTenLeftY.unshift(leftY);
+
+            if(lastTenLeftX.length>cursorUpdateRate){
+
+                tmp = [];
+                for(i=0 ; i < cursorUpdateRate ; i++){
+
+                    tmp.push(lastTenLeftX[i]);
+                }
+                lastTenLeftX = tmp;
+            }
+            
+            if(lastTenLeftY.length>cursorUpdateRate){
+
+                tmp = [];
+                for(i=0 ; i < cursorUpdateRate ; i++){
+
+                    tmp.push(lastTenLeftY[i]);
+                }
+                lastTenLeftY = tmp;
+            }
+            
+            
+            
+            lastTenRightX.unshift(rightX);
+            lastTenRightY.unshift(rightY);
+
+            if(lastTenRightX.length>cursorUpdateRate){
+
+                tmp = [];
+                for(i=0 ; i < cursorUpdateRate ; i++){
+                    tmp.push(lastTenRightX[i]);
+                }
+                lastTenRightX = tmp;
+            }
+            
+            if(lastTenRightY.length>cursorUpdateRate){
+
+                tmp = [];
+                for(i=0 ; i < cursorUpdateRate ; i++){
+                    tmp.push(lastTenRightY[i]);
+                }
+                lastTenRightY = tmp;
+            }
+
+        }); 
+
+        });
+
+
+
+        </script>
 	</body>
 </html>

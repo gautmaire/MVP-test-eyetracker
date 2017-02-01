@@ -1,30 +1,201 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Démonstration See2Learn</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		<script src="js/jquery.js"></script>
-	</head>
-	<body>
-		<!-- <header class="row">
-			<img class="col-xs-2" src="img/logo.png" alt="logo_See2Learn">
-			<h1 class="">Page de démonstration de lecture avec l'Eye Tracker</h1>
-		</header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Démonstration See2Learn</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+        <script src="js/jquery.js"></script>
+    </head>
+    <body>
+        <header class="row">
+            <img class="col-xs-2" src="img/logo.png" alt="logo_See2Learn">
+            <h1 class="">Page de démonstration de lecture avec l'Eye Tracker</h1>
+        </header>
 
-		<section>
-			<p>Mot lus : <span id="results">---</span></p>
-			<h2>La voiture volante d’Airbus</h2> -->
-			<canvas id="canvas" width="800" height="400">
-				<p>Le constructeur aéronautique Airbus semble vouloir offrir le rêve d’Icare à tout un chacun. L’entreprise planche sur un projet d’engin volant électrique et une voiture volante capable de transporter un passager au sein des villes de demain, devrait voir le jour d’ici la fin de l’année.</p>
+        <section>
+            <p id="mot_resultat">Mot lus : <span id="results">---</span></p>
+            <h2>La voiture volante d’Airbus</h2>
+            <div id="cursor">X</div>
+            <canvas id="canvas" width="800" height="400">
+               <p>Le constructeur aéronautique Airbus semble vouloir offrir le rêve d’Icare à tout un chacun. L’entreprise planche sur un projet d’engin volant électrique et une voiture volante capable de transporter un passager au sein des villes de demain, devrait voir le jour d’ici la fin de l’année.</p>
+            </canvas>
 
-				<p>Si Airbus souhaite avancer si vite, c’est évidemment pour être la première société à lancer une voiture volante sur le marché, car l’entreprise est parfaitement consciente que les hommes devront prendre la voie des airs dans un avenir proche. Airbus affirmait à ce sujet il y a peu : « En 2030, 60% de la population mondiale vivra dans des villes, ce qui représente 10% de plus qu’aujourd’hui » , il est donc facile d’imaginer que les embouteillages seront le fléau des citadins à l’avenir. L’idée est donc de désengorger une partie du trafic en s’envolant…</p>
+            <script type="text/javascript">
+                
+                var socket;
+            
+                //Outdated array names, not last ten, but last cursorUpdateRate
+                var lastTenLeftX = [];
+                var lastTenLeftY = [];
+                var lastTenRightX = [];
+                var lastTenRightY = [];
+            
+                var cursorUpdateRate = 50;
+                var offsetX= 0;
+                var offsetY= 0;
 
-				<p>Faut-il entendre qu’en 2020, les premiers modèles de voitures volantes arriveront sur le marché ? Techniquement, il est probable que oui, car Airbus n’est pas seul dans cette course et on peut citer des dizaines de sociétés œuvrant sur ce futur marché, comme par exemple le drone voiture Ehang 184 présenté l’année dernière au CES ou encore les véhicules de Joby Aviation. En revanche là où les entreprises pourraient se frotter à un mur, c’est au niveau législatif car on voit actuellement toutes les difficultés réglementaires qui existent autour des drones, on peut facilement imaginer le casse-tête que seront les voitures volantes pour les autorités.</p>
-			</canvas>
-		<!-- </section> -->
-		<script src="js/main.js"></script>
-	</body>
+                var $results = $("#results");
+                var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
+                var $canvas = $("#canvas");
+                var canvasOffset = $canvas.offset();
+                var offsetX = canvasOffset.left;
+                var offsetY = canvasOffset.top;
+
+                var text = $("p:not('#mot_resultat')").text();
+                var words = text.split(" ");
+                var wordsBB = new Array(words.length);
+
+                ctx.font = "30px arial";
+
+                var length = ctx.measureText(words[0]).width;
+
+                wordsBB[0] = {
+                    x: 0,
+                    y: 0,
+                    width: length,
+                    height: 50
+                }
+
+                var accumLength = length;
+
+                for (var i = 1; i < words.length; i++) {
+                    var length = ctx.measureText(" " + words[i]).width;
+                    wordsBB[i] = {
+                        x: accumLength,
+                        y: 0,
+                        width: length,
+                        height: 50
+                    }
+                    accumLength += length;
+                }
+
+                ctx.fillText(text, 0, 30);
+                ctx.lineWidth = 0.50;
+
+                $(document).ready(function(){
+                    window.onmousemove = function(e){
+                        offsetX = -1 * (e.clientX-e.screenX);
+                        offsetY = -1 * (e.clientY-e.screenY);
+                    };
+                    socket = io();
+
+                    function update() {
+                        socket.emit('updateRequest', $('#m').val());
+                        $('#m').val('');
+                        return false;
+                    }   
+                    
+                    setInterval(update, 1);//Ask server for update every 1ms
+                    setInterval(updateCursor, cursorUpdateRate);//Refresh the cursor position every "cursorUpdateRate" ms
+
+                    function updateCursor(){
+                        var x = document.getElementById('cursor');
+                        x.style.position = "absolute";
+
+                        var averageLeftX = 0;
+                        var averageLeftY = 0;
+                        var averageRightX = 0;
+                        var averageRightY = 0;
+                        for(i=0 ; i < lastTenLeftX.length ; i++){
+                            averageLeftX += lastTenLeftX[i];
+                        }
+
+                        for(i=0 ; i < lastTenLeftY.length ; i++){
+                            averageLeftY += lastTenLeftY[i];
+                        }
+
+                        averageLeftX = averageLeftX/lastTenLeftX.length;
+                        averageLeftY = averageLeftY/lastTenLeftY.length;
+
+                        var leftX = averageLeftX*screen.width-offsetX;
+                        var leftY = averageLeftY*screen.height-offsetY;      
+
+                        for(i=0 ; i < lastTenRightX.length ; i++){
+                            averageRightX += lastTenRightX[i];
+                        }
+
+                        for(i=0 ; i < lastTenRightY.length ; i++){
+                            averageRightY += lastTenRightY[i];
+                        }
+
+                        averageRightX = averageRightX/lastTenRightX.length;
+                        averageRightY = averageRightY/lastTenRightY.length;
+
+                        var rightX = averageRightX*screen.width-offsetX;
+                        var rightY = averageRightY*screen.height-offsetY;  
+
+                        var avgLRX = (rightX+leftX)/2;
+                        var avgLRY = (rightY+leftY)/2;
+                        x.style.left = (avgLRX)+'px';
+                        x.style.top = (avgLRY)+'px';      
+
+                        var x = avgLRX;
+                        var y = avgLRY;
+                        for(i = 0; i < wordsBB.length; i++)
+                        {
+                            var bb = wordsBB[i];
+                            if (x > bb.x && x < bb.x + bb.width && y > bb.y & y < bb.y + bb.height) {
+                                ctx.fillStyle="rgba(0, 0, 0, 0.1)";
+                                ctx.fillRect(bb.x, bb.y, bb.width, bb.height);
+                                wordsBB.splice(i, 1);
+                                words.splice(i, 1);
+                            }   
+                        }
+                    };
+        
+                    //When data received from the server
+                    socket.on('coordinates', function(leftX, leftY, rightX, rightY){
+
+                        lastTenLeftX.unshift(leftX);
+                        lastTenLeftY.unshift(leftY);
+
+                        if(lastTenLeftX.length>cursorUpdateRate){
+
+                            tmp = [];
+                            for(i=0 ; i < cursorUpdateRate ; i++){
+
+                                tmp.push(lastTenLeftX[i]);
+                            }
+                            lastTenLeftX = tmp;
+                        }
+                        
+                        if(lastTenLeftY.length>cursorUpdateRate){
+
+                            tmp = [];
+                            for(i=0 ; i < cursorUpdateRate ; i++){
+
+                                tmp.push(lastTenLeftY[i]);
+                            }
+                            lastTenLeftY = tmp;
+                        }                   
+                        
+                        lastTenRightX.unshift(rightX);
+                        lastTenRightY.unshift(rightY);
+
+                        if(lastTenRightX.length>cursorUpdateRate){
+
+                            tmp = [];
+                            for(i=0 ; i < cursorUpdateRate ; i++){
+                                tmp.push(lastTenRightX[i]);
+                            }
+                            lastTenRightX = tmp;
+                        }
+                        
+                        if(lastTenRightY.length>cursorUpdateRate){
+
+                            tmp = [];
+                            for(i=0 ; i < cursorUpdateRate ; i++){
+                                tmp.push(lastTenRightY[i]);
+                            }
+                            lastTenRightY = tmp;
+                        }
+                    });
+                });
+            </script>
+        </section>
+    </body>
 </html>

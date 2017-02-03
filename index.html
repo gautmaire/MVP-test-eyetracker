@@ -1,201 +1,276 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Démonstration See2Learn</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Démonstration See2Learn</title>
+		<link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="public/css/style.css">
         <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
-        <script src="js/jquery.js"></script>
-    </head>
-    <body>
-        <header class="row">
-            <img class="col-xs-2" src="img/logo.png" alt="logo_See2Learn">
-            <h1 class="">Page de démonstration de lecture avec l'Eye Tracker</h1>
-        </header>
+        <style type="text/css">
+            body{
+  margin: 10px 10%;
+}
 
-        <section>
+h1, h2, h3, p{
+  font-family: Arial;
+  color: #4A4E4D;
+}
+
+h1{
+  font-size: 2em;
+  text-align: center;
+}
+
+h2{
+  font-size: 1.8em;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+p{
+    text-align: justify;
+    font-size: 1.8em;
+    line-height: 3em;
+    margin-top: 50px;
+}
+
+header{
+  border-bottom: 2px solid #4A4E4D;
+  padding: 30px 0;
+}
+
+header img{
+    width: 145px;
+}
+
+#contenu{
+    padding: 30px 40px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+        </style>
+	</head>
+	<body>
+		<header class="row">
+			<div class="col-xs-4 col-sm-3 col-md-2">
+				<!-- <img src="img/logo.png" alt="logo_See2Learn"> -->
+			</div>
+			<h1 class="col-xs-8 col-sm-9 col-md-10">Page de démonstration de lecture avec l'Eye Tracker</h1>
+		</header>
+
+		<section id="contenu">
             <p id="mot_resultat">Mot lus : <span id="results">---</span></p>
             <h2>La voiture volante d’Airbus</h2>
             <div id="cursor">X</div>
-            <canvas id="canvas" width="800" height="400">
+
+			<canvas id="canvas" width="800" height="400">
                <p>Le constructeur aéronautique Airbus semble vouloir offrir le rêve d’Icare à tout un chacun. L’entreprise planche sur un projet d’engin volant électrique et une voiture volante capable de transporter un passager au sein des villes de demain, devrait voir le jour d’ici la fin de l’année.</p>
             </canvas>
+		</section>
+		<!-- <script src="js/jquery.js"></script> -->
 
-            <script type="text/javascript">
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+
+		<script type="text/javascript" src="public/js/main.js"></script>
+		<script type="text/javascript" src="public/js/mouse-position.js"></script>
+
+		<script type="text/javascript">
                 
-                var socket;
-            
-                //Outdated array names, not last ten, but last cursorUpdateRate
-                var lastTenLeftX = [];
-                var lastTenLeftY = [];
-                var lastTenRightX = [];
-                var lastTenRightY = [];
-            
-                var cursorUpdateRate = 50;
-                var offsetX= 0;
-                var offsetY= 0;
 
-                var $results = $("#results");
-                var canvas = document.getElementById("canvas");
-                var ctx = canvas.getContext("2d");
-                var $canvas = $("#canvas");
-                var canvasOffset = $canvas.offset();
-                var offsetX = canvasOffset.left;
-                var offsetY = canvasOffset.top;
+        // ****************************
+            // code pour eye Tracker
+        // ****************************
+            var socket;
+        
+            //Outdated array names, not last ten, but last cursorUpdateRate
+            var lastTenLeftX = [];
+            var lastTenLeftY = [];
+            var lastTenRightX = [];
+            var lastTenRightY = [];
 
-                var text = $("p:not('#mot_resultat')").text();
-                var words = text.split(" ");
-                var wordsBB = new Array(words.length);
+            var cursorUpdateRate = 50;
+            var offsetX= 0;
+            var offsetY= 0;
 
-                ctx.font = "30px arial";
+            var $results = $("#results");
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var $canvas = $("#canvas");
+            var canvasOffset = $canvas.offset();
+            var offsetX = canvasOffset.left;
+            var offsetY = canvasOffset.top;
 
-                var length = ctx.measureText(words[0]).width;
+            var text = $("p:not('#mot_resultat')").text();
+            var words = text.split(" ");
+            var wordsBB = new Array(words.length);
 
-                wordsBB[0] = {
-                    x: 0,
+            ctx.font = "30px arial";
+
+            var length = ctx.measureText(words[0]).width;
+
+            wordsBB[0] = {
+                x: 0,
+                y: 0,
+                width: length,
+                height: 50
+            }
+
+            var accumLength = length;
+
+            for (var i = 1; i < words.length; i++) {
+                var length = ctx.measureText(" " + words[i]).width;
+                wordsBB[i] = {
+                    x: accumLength,
                     y: 0,
                     width: length,
                     height: 50
                 }
+                accumLength += length;
+            }
 
-                var accumLength = length;
+            ctx.fillText(text, 0, 30);
+            ctx.lineWidth = 0.50;
 
-                for (var i = 1; i < words.length; i++) {
-                    var length = ctx.measureText(" " + words[i]).width;
-                    wordsBB[i] = {
-                        x: accumLength,
-                        y: 0,
-                        width: length,
-                        height: 50
-                    }
-                    accumLength += length;
+            $(document).ready(function(){
+                window.onmousemove = function(e){
+                    offsetX = -1 * (e.clientX-e.screenX);
+                    offsetY = -1 * (e.clientY-e.screenY);
+                };
+                socket = io();
+
+                function update() {
+                    socket.emit('updateRequest', $('#m').val());
+                    $('#m').val('');
+                    return false;
+
                 }
+                
+                
+                setInterval(update, 1);//Ask server for update every 1ms
+                setInterval(updateCursor, cursorUpdateRate);//Refresh the cursor position every "cursorUpdateRate" ms
 
-                ctx.fillText(text, 0, 30);
-                ctx.lineWidth = 0.50;
+                function updateCursor(){
 
-                $(document).ready(function(){
-                    window.onmousemove = function(e){
-                        offsetX = -1 * (e.clientX-e.screenX);
-                        offsetY = -1 * (e.clientY-e.screenY);
-                    };
-                    socket = io();
-
-                    function update() {
-                        socket.emit('updateRequest', $('#m').val());
-                        $('#m').val('');
-                        return false;
-                    }   
+                    // ON RECUPERE LE CURSEUR X DU MILIEU
                     
-                    setInterval(update, 1);//Ask server for update every 1ms
-                    setInterval(updateCursor, cursorUpdateRate);//Refresh the cursor position every "cursorUpdateRate" ms
+                    var x = document.getElementById('cursor');
+                    x.style.position = "absolute";
 
-                    function updateCursor(){
-                        var x = document.getElementById('cursor');
-                        x.style.position = "absolute";
+                    // OEIL GAUCHE
+                    var averageLeftX = 0;
+                    var averageLeftY = 0;
+                    var averageRightX = 0;
+                    var averageRightY = 0;
+                    
+                    // ON RECUPERE LES DIX DERNIERS VALEURS, EN X ET EN Y DE L'OEIL GAUCHE
+                    for(i=0 ; i < lastTenLeftX.length ; i++){
+                        averageLeftX += lastTenLeftX[i];
+                    }
 
-                        var averageLeftX = 0;
-                        var averageLeftY = 0;
-                        var averageRightX = 0;
-                        var averageRightY = 0;
-                        for(i=0 ; i < lastTenLeftX.length ; i++){
-                            averageLeftX += lastTenLeftX[i];
+
+                    for(i=0 ; i < lastTenLeftY.length ; i++){
+                        averageLeftY += lastTenLeftY[i];
+                    }
+
+                    // ON FAIT LA MOYENNE DES DIX DERNIERES VALEURS
+
+                    averageLeftX = averageLeftX/lastTenLeftX.length;
+                    averageLeftY = averageLeftY/lastTenLeftY.length;
+
+                    // ON FAIT LE RAPPORT ENTRE LA MOYENNE + LA TAILLE DE L'ECRAN
+
+                    var leftX = averageLeftX*screen.width-offsetX;
+                    var leftY = averageLeftY*screen.height-offsetY;
+
+
+                    for(i=0 ; i < lastTenRightX.length ; i++){
+                        averageRightX += lastTenRightX[i];
+                    }
+
+                    for(i=0 ; i < lastTenRightY.length ; i++){
+                        averageRightY += lastTenRightY[i];
+                    }
+
+                    averageRightX = averageRightX/lastTenRightX.length;
+                    averageRightY = averageRightY/lastTenRightY.length;
+
+
+                    var rightX = averageRightX*screen.width-offsetX;
+                    var rightY = averageRightY*screen.height-offsetY;  
+
+                    // ON DEPLACE LE CURSEUR "X" DE LA MOYENNE DES COORDS DE L'OEIL GAUCHE ET DROIT (STYLE)
+
+                    var avgLRX = (rightX+leftX)/2;
+                    var avgLRY = (rightY+leftY)/2;
+                    x.style.left = (avgLRX)+'px';
+                    x.style.top = (avgLRY)+'px';      
+
+                    // ON PARCOURS TOUS LES MOTS DU TABLEAU
+                    for(i = 0; i < wordsBB.length; i++)
+                    {
+                        var bb = wordsBB[i];
+                        if (x > bb.x && x < bb.x + bb.width && y > bb.y & y < bb.y + bb.height) {
+                            ctx.fillStyle="rgba(0, 0, 0, 0.1)";
+                            ctx.fillRect(bb.x, bb.y, bb.width, bb.height);
+                            wordsBB.splice(i, 1);
+                            words.splice(i, 1);
                         }
+                    }
+                };
+              
+                //When data received from the server
+                socket.on('coordinates', function(leftX, leftY, rightX, rightY){
 
-                        for(i=0 ; i < lastTenLeftY.length ; i++){
-                            averageLeftY += lastTenLeftY[i];
+                    lastTenLeftX.unshift(leftX);
+                    lastTenLeftY.unshift(leftY);
+
+                    if(lastTenLeftX.length>cursorUpdateRate){
+
+                        tmp = [];
+                        for(i=0 ; i < cursorUpdateRate ; i++){
+
+                            tmp.push(lastTenLeftX[i]);
                         }
+                        lastTenLeftX = tmp;
+                    }
+                    
+                    if(lastTenLeftY.length>cursorUpdateRate){
 
-                        averageLeftX = averageLeftX/lastTenLeftX.length;
-                        averageLeftY = averageLeftY/lastTenLeftY.length;
+                        tmp = [];
+                        for(i=0 ; i < cursorUpdateRate ; i++){
 
-                        var leftX = averageLeftX*screen.width-offsetX;
-                        var leftY = averageLeftY*screen.height-offsetY;      
-
-                        for(i=0 ; i < lastTenRightX.length ; i++){
-                            averageRightX += lastTenRightX[i];
+                            tmp.push(lastTenLeftY[i]);
                         }
+                        lastTenLeftY = tmp;
+                    }
+                         
+                    lastTenRightX.unshift(rightX);
+                    lastTenRightY.unshift(rightY);
 
-                        for(i=0 ; i < lastTenRightY.length ; i++){
-                            averageRightY += lastTenRightY[i];
+                    if(lastTenRightX.length>cursorUpdateRate){
+
+                        tmp = [];
+                        for(i=0 ; i < cursorUpdateRate ; i++){
+                            tmp.push(lastTenRightX[i]);
                         }
+                        lastTenRightX = tmp;
+                    }
+                    
+                    if(lastTenRightY.length>cursorUpdateRate){
 
-                        averageRightX = averageRightX/lastTenRightX.length;
-                        averageRightY = averageRightY/lastTenRightY.length;
-
-                        var rightX = averageRightX*screen.width-offsetX;
-                        var rightY = averageRightY*screen.height-offsetY;  
-
-                        var avgLRX = (rightX+leftX)/2;
-                        var avgLRY = (rightY+leftY)/2;
-                        x.style.left = (avgLRX)+'px';
-                        x.style.top = (avgLRY)+'px';      
-
-                        var x = avgLRX;
-                        var y = avgLRY;
-                        for(i = 0; i < wordsBB.length; i++)
-                        {
-                            var bb = wordsBB[i];
-                            if (x > bb.x && x < bb.x + bb.width && y > bb.y & y < bb.y + bb.height) {
-                                ctx.fillStyle="rgba(0, 0, 0, 0.1)";
-                                ctx.fillRect(bb.x, bb.y, bb.width, bb.height);
-                                wordsBB.splice(i, 1);
-                                words.splice(i, 1);
-                            }   
+                        tmp = [];
+                        for(i=0 ; i < cursorUpdateRate ; i++){
+                            tmp.push(lastTenRightY[i]);
                         }
-                    };
-        
-                    //When data received from the server
-                    socket.on('coordinates', function(leftX, leftY, rightX, rightY){
-
-                        lastTenLeftX.unshift(leftX);
-                        lastTenLeftY.unshift(leftY);
-
-                        if(lastTenLeftX.length>cursorUpdateRate){
-
-                            tmp = [];
-                            for(i=0 ; i < cursorUpdateRate ; i++){
-
-                                tmp.push(lastTenLeftX[i]);
-                            }
-                            lastTenLeftX = tmp;
-                        }
-                        
-                        if(lastTenLeftY.length>cursorUpdateRate){
-
-                            tmp = [];
-                            for(i=0 ; i < cursorUpdateRate ; i++){
-
-                                tmp.push(lastTenLeftY[i]);
-                            }
-                            lastTenLeftY = tmp;
-                        }                   
-                        
-                        lastTenRightX.unshift(rightX);
-                        lastTenRightY.unshift(rightY);
-
-                        if(lastTenRightX.length>cursorUpdateRate){
-
-                            tmp = [];
-                            for(i=0 ; i < cursorUpdateRate ; i++){
-                                tmp.push(lastTenRightX[i]);
-                            }
-                            lastTenRightX = tmp;
-                        }
-                        
-                        if(lastTenRightY.length>cursorUpdateRate){
-
-                            tmp = [];
-                            for(i=0 ; i < cursorUpdateRate ; i++){
-                                tmp.push(lastTenRightY[i]);
-                            }
-                            lastTenRightY = tmp;
-                        }
-                    });
-                });
-            </script>
-        </section>
-    </body>
+                        lastTenRightY = tmp;
+                    }
+                }); 
+            });
+        </script>
+	</body>
 </html>

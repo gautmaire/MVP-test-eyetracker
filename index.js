@@ -1,11 +1,41 @@
-var app = require('express')();
+var express = require('express')
+    , routes = require('./public')
+    , http = require('http');
+
+var app = express();
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use("/css",  express.static(__dirname + '/public/stylesheets'));
+app.use("/js", express.static(__dirname + '/public/javascripts'));
+app.use("/img",  express.static(__dirname + '/public/images'));
+
+
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
+
+app.get('/', function (req, res) {
+      res.sendfile(__dirname + '/public/index.html');
+});
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var left, right; // left.x left.y etc, positions of the gaze
 
+// pour essayer d'inclure les fichiers
+/*var routes = require("./static/css/bootstrap.min.css"); 
+app.use('/', routes);
 
+var routes1 = require("./static/css/style.css"); 
+app.use('/', routes1);
 
+var routes2 = require("./static/js/main.js"); 
+app.use('/', routes2);
+
+var routes3 = require("./static/js/main.js"); 
+app.use('/', routes3);*/
 
 
 
@@ -138,11 +168,6 @@ onGazeDataCallback = bridjs.newCallback(callbackTypes.Listener, function(gazeDat
     left = gazeData.left.gazePointOnDisplayNormalized, right = gazeData.right.gazePointOnDisplayNormalized;
 });
 
-
-
-
-
-
 //-----------------------
 
 
@@ -164,5 +189,3 @@ io.on('connection', function(socket){
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
-
-

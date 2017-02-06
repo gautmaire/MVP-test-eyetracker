@@ -22,3 +22,13 @@
 }());
 
 // Place any jQuery/helper plugins in here.
+
+/* Code correspondant à l'ouverture du menu dans la partie user log in */
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}

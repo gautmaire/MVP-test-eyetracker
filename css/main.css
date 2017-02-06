@@ -14,6 +14,13 @@ html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
+    height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -96,13 +103,348 @@ textarea {
    ========================================================================== */
 
 
+/* **************************************
+            Page d'Accueil
+************************************** */
+
+
+/* ****** ------> Fonts */
+
+@font-face {
+  font-family: "Quicksand";
+  font-weight: 300;
+  src: url('../fonts/quicksand/Quicksand-Light.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: normal;
+  src: url('../fonts/quicksand/Quicksand-Regular.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: 500;
+  src: url('../fonts/quicksand/Quicksand-Medium.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: bold;
+  src: url('../fonts/quicksand/Quicksand-Bold.ttf');
+}
+
+
+@font-face {
+  font-family: "ABeeZee";
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/abeezee/ABeeZee-Regular.ttf');
+}
+
+@font-face {
+  font-family: "ABeeZee";
+  font-weight: normal;
+  font-style: italic;
+  src: url('../fonts/abeezee/ABeeZee-Italic.ttf');
+}
 
 
 
 
+/* ****** ------> Générale */
+
+body {
+  height: 100%;
+  background: #0E9AA7;
+}
+
+li{
+  list-style-type: none;
+}
+
+a:link {
+  text-decoration: none;
+}
 
 
 
+/* ****** ------> Header */
+
+header{
+  height: 200px;
+  padding-top: 25px;
+  background: #efefef;
+}
+
+header img{
+  width: 140px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.signIn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+
+.signUp {
+  position: fixed;
+  right: 20px;
+  top: 60px;
+}
+
+.signIn, .signUp {
+  font-family: 'Quicksand';
+  font-weight: 500;
+  width: 120px;
+  color: #F6CD61;
+  border: 3px solid #F6CD61;
+  background: none;
+  font-size: 1.2em;
+}
+
+.signIn:hover, .signUp:hover {
+  color: white;
+  background: #F6CD61;
+}
+
+
+/* ****** ------> Conteneur */
+
+body > div {
+  display: inline-block;
+  min-width: 804px;
+
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+div > aside, div > section{  
+  background: white; 
+  vertical-align: text-top;
+
+  display: inline-block;
+
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+}
+
+
+
+/* ****** ------> Nav */
+
+aside {
+  width: 200px;
+  padding: 40px 0;
+  position: relative;
+  z-index: 3;
+}
+
+aside ul{
+  padding: 0;
+  margin: 0;
+  width: 200px;
+}
+
+aside li {
+  display: inline;
+}
+
+aside a{
+  color: #4A4E4D;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 1em;
+
+  display: inline-block;
+  width: 200px;
+  padding: 20px 0 20px 15px;
+
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+aside a:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #4A4E4D;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+aside a:hover, aside a:focus, aside a:active{
+  color: white;
+}
+
+.activeLink{
+  color: white;
+  background: #4A4E4D;
+
+}
+
+aside a:hover:before, aside a:focus:before, aside a:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+/* ****** ------> Sections contenus menu */
+
+section {
+  width: 610px;
+  height: 500px;
+  margin-left: -10px;
+  margin-top: 1.5px;
+  position: absolute;
+  z-index: 1;
+}
+
+h2{
+  background-color: #4A4E4D;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 1.6em;
+  margin: 0;
+  padding: 20px 40px 20px 45px;
+  text-align: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+section > div {
+  margin-left: 6px;
+}
+
+
+/* le concept */
+
+.imageRonde {
+  overflow:hidden;
+  -webkit-border-radius:70px;
+  -moz-border-radius:70px;
+  border-radius:70px;
+  width:140px;
+  height:140px;
+  margin: 20px auto;
+}
+
+.imageRonde  img{
+  width: 250px;
+}
+
+section > div > p {
+  margin: 30px 30px;
+  text-align: justify;
+  font-family: 'ABeeZee';
+  font-size: 1em;
+}
+
+.tweet{
+  margin: 10px 0px 0px 10px;
+}
+
+/* ****** ------> Cacher les sections */
+
+.cache {
+  width: 640px;
+  height: 540px;
+  position: absolute;
+  top: -20px;
+  left: -140px;
+  z-index: 2;
+  transition: all 1s ease;
+}
+
+.cacheGris{
+  width: 100%;
+  height: 71px;
+  background-color: #efefef;
+}
+
+.cacheBleu{
+  width: 100%;
+  height: 469px;
+  background-color: #0E9AA7;
+}
+
+
+/* ****** ------> transition menu */
+
+div > aside{
+  transform: translateX(300px);
+  transition: all 1s ease;
+}
+
+div > section{
+  transform: translateX(-310px);
+  transition: all 1s ease;
+}
+
+.activeCache{
+  transform: translateX(-300px);
+}
+
+.activeItem{
+  transform: translateX(0px);
+}
+
+.activeSection{
+  /*animation: MovmentRight 3s ease forwards;*/
+  transform: translateX(15px);
+}
+
+.desactiveSection{
+  transform: translateX(-610px);
+}
+
+/*@keyframes MovmentRight{
+  from{
+    transform: scaleX(0);
+  }
+  to{
+    transform: scaleX(1);
+  }
+}*/
+
+
+
+
+/* ****** ------> Footer */
+
+footer{
+  padding-top: 480px;
+  text-align: center;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 0.9em;
+}
 
 
 

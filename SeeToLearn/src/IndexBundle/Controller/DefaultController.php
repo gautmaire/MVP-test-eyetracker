@@ -14,4 +14,20 @@ class DefaultController extends Controller
     {
         return $this->render('IndexBundle:Default:index.html.twig');
     }
+
+    /**
+     * @Route("/lecture")
+     */
+    public function lectureAction()
+    {
+        return $this->render('IndexBundle:Default:lecture.html.twig');
+    }
+
+    /**
+     * @Route("/fiche")
+     */
+    public function ficheAction()
+    {
+        return $this->render('IndexBundle:Default:fiche.html.twig');
+    }
 }

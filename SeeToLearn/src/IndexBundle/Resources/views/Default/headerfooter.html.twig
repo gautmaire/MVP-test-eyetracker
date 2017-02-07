@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %} {% endblock %}
+    <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.min.css') }}">
+    {% block css %} {% endblock %}
+</head>
+<body>
+
+{% block content %} {% endblock %}
+
+<script type="text/javascript" src="{{ asset('bundles/js/jquery-3.1.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/js/main.js') }}"></script>
+</body>
+</html>

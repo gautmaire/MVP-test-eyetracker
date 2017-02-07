@@ -13,7 +13,7 @@ use UserBundle\Entity\User;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/Test")
      */
     public function indexAction()
     {

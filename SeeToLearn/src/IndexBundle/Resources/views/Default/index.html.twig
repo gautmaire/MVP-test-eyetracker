@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Accueil</title>
+{% extends 'IndexBundle:Default:headerfooter.html.twig' %}
 
-    <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.min.css') }}">
+{% block title %}
+    <title>Accueil</title>
+{% endblock %}
+
+{% block css %}
     <link rel="stylesheet" href="{{ asset('bundles/css/main.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
 <header>
     <img src="{{ asset('bundles/img/logo.png') }}" alt="logo_See2Learn" />
 
@@ -122,17 +122,11 @@
         </div>
     </section>
 </div>
+    <footer>
+        <p>See To Learn ©</p>
+    </footer>
 
-<footer>
-    <p>See To Learn ©</p>
-</footer>
 
-
-<!-- script pour le feed twitter -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-<script type="text/javascript" src="{{ asset('bundles/js/jquery-3.1.1.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('bundles/js/main.js') }}"></script>
-</body>
-</html>
+    <!-- script pour le feed twitter -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+{% endblock %}

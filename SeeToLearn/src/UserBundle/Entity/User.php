@@ -2,8 +2,10 @@
 
 namespace UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use LangueBundle\Entity\NiveauLangue;
 
 /**
  * User
@@ -37,12 +39,22 @@ class User extends BaseUser
     private $prenom;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="Niveau", type="integer")
+     * @ORM\ManyToMany(targetEntity="LangueBundle\Entity\NiveauLangue", cascade={"persist"})
      */
-    private $niveau;
 
+    private $niveaulangue;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="TextBundle\Entity\Text", cascade={"persist"})
+     */
+
+    private $text;
+
+    public function __construct()
+    {
+        $this->niveaulangue = new ArrayCollection();
+        $this->text = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -102,28 +114,36 @@ class User extends BaseUser
         return $this->prenom;
     }
 
-    /**
-     * Set niveau
-     *
-     * @param integer $niveau
-     *
-     * @return User
-     */
-    public function setNiveau($niveau)
+    public function addNiveauLangue(NiveauLangue $niveaulangue)
     {
-        $this->niveau = $niveau;
-
+        $this->niveaulangue[] = $niveaulangue;
         return $this;
     }
 
-    /**
-     * Get niveau
-     *
-     * @return int
-     */
-    public function getNiveau()
+    public function removeNiveauLangue(NiveauLangue $niveauLangue)
     {
-        return $this->niveau;
+        $this->niveaulangue->removeElement($niveauLangue);
+    }
+
+    public function getNiveauLangue()
+    {
+        return $this->niveaulangue;
+    }
+
+    public function addText(Text $text)
+    {
+        $this->text[] = $text;
+        return $this;
+    }
+
+    public function removeText(Text $text)
+    {
+        $this->text->removeElement($text);
+    }
+
+    public function getText()
+    {
+        return $this->text;
     }
 }
 

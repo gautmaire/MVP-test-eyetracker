@@ -24,10 +24,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/fiche")
+     * @Route("/tableau")
      */
-    public function ficheAction()
+    public function tableauAction()
     {
-        return $this->render('IndexBundle:Default:fiche.html.twig');
+        return $this->render('IndexBundle:Default:tableau.html.twig');
     }
 }

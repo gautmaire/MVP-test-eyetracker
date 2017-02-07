@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accueil</title>
+
+    <link rel="stylesheet" href="{{ asset('bundles/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/css/main.css') }}">
+</head>
+<body>
+<header>
+    <img src="{{ asset('bundles/img/logo.png') }}" alt="logo_See2Learn" />
+
+    <a href="/register"> <button class="signIn">Inscription</button> </a>
+    <a href="/login"> <button class="signUp">Connexion</button> </a>
+</header>
+
+<div>
+    <aside>
+        <nav>
+            <ul>
+                <li><a id="concept" href="#">Le concept</a></li>
+                <li><a id="comCaMarche" href="#">Comment ça marche ?</a></li>
+                <li><a id="eyetracker" href="#">L'Eye Tracker</a></li>
+                <li><a id="temoignages" href="#">Témoignages</a></li>
+                <li><a id="twitter" href="#">Twitter</a></li>
+                <li><a id="equipe" href="#">L'équipe</a></li>
+                <li><a id="mentions-legales" href="#">Mentions légales</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- div pour cacher les sections -->
+    <div class="cache">
+        <div class="cacheGris"></div>
+        <div class="cacheBleu"></div>
+    </div>
+
+    <!-- section le concept -->
+    <section class="concept">
+        <h2>Apprends une nouvelle langue avec la méthode "See To Learn" !</h2>
+        <div>
+            <div class="imageRonde">
+                <img src="{{ asset('bundles/img/school.png') }}" alt="School"/>
+            </div>
+            <p>Nous avons contacter que, durant ces dernières années, les nouvelles technologies ont grandement évoluer. Cependant, l'enseignement des langues est resté la même.</p>
+            <p>C'est pourquoi on a réfléchis à une nouvelle méthode d'apprendre une langue en utilisant les nouvelles technologies.</p>
+            <p>See To Learn vous propose donc d'apprendre une angue en lisant des textes qui vous sont suggérer selon votre niveau et votre avancement.</p>
+        </div>
+    </section>
+
+    <!-- section comment ça marche ? -->
+    <section class="comCaMarche">
+        <h2>Comment ça marche ?</h2>
+        <div>
+            <p>Grâce aux données récolter lors de vos lecture sur différents texte à niveaux différent, nous vous proposons des textes qui sont les plus adapter pour optimizer votre apprentissage de la langue.</p>
+            <div class="imageRonde">
+                <img src="{{ asset('bundles/img/pc-tobii-zoom.jpg') }}" alt="PC-Tobii-Zoom"/>
+            </div>
+            <p>Blablabla blablabla...</p>
+        </div>
+    </section>
+
+    <!-- section l'eyetracker -->
+    <section class="eyetracker">
+        <h2>L'Eye Tracker, c'est quoi ?</h2>
+        <div>
+            <div class="imageRonde">
+                <img src="{{ asset('bundles/img/pc-tobii.jpg') }}" alt="PC-Tobii"/>
+            </div>
+            <p>Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...</p>
+            <p>Blablabla blablabla...Blablabla blablabla...</p>
+            <p>Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla blablabla...Blablabla</p>
+        </div>
+    </section>
+
+    <!-- section témoignages -->
+    <section class="temoignages">
+        <h2>Apprends une nouvelle langue avec la méthode "See To Learn" !</h2>
+        <div>
+            <div class="imageRonde">
+                <img src="{{ asset('bundles/img/school.png') }}" alt="School"/>
+            </div>
+            <p>Nous avons contacter que, durant ces dernières années, les nouvelles technologies ont grandement évoluer. Cependant, l'enseignement des langues est resté la même.</p>
+            <p>C'est pourquoi on a réfléchis à une nouvelle méthode d'apprendre une langue en utilisant les nouvelles technologies.</p>
+            <p>See To Learn vous propose donc d'apprendre une angue en lisant des textes qui vous sont suggérer selon votre niveau et votre avancement.</p>
+        </div>
+    </section>
+
+    <!-- section twitter -->
+    <section class="twitter">
+        <h2>Suivez-nous sur Twitter pour vous tenir au courant de nos actualités !</h2>
+        <div class="tweet">
+            <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/SeeTo2Learn" data-height="400" data-width="580">Tweets by @SeeTo2Learn</a>
+        </div>
+    </section>
+
+    <!-- section l'équipe -->
+    <section class="equipe">
+        <h2>Apprends une nouvelle langue avec la méthode "See To Learn" !</h2>
+        <div>
+            <div class="imageRonde">
+                <img src="{{ asset('bundles/img/school.png') }}" alt="School"/>
+            </div>
+            <p>Nous avons contacter que, durant ces dernières années, les nouvelles technologies ont grandement évoluer. Cependant, l'enseignement des langues est resté la même.</p>
+            <p>C'est pourquoi on a réfléchis à une nouvelle méthode d'apprendre une langue en utilisant les nouvelles technologies.</p>
+            <p>See To Learn vous propose donc d'apprendre une angue en lisant des textes qui vous sont suggérer selon votre niveau et votre avancement.</p>
+        </div>
+    </section>
+
+    <!-- section Mentions légales -->
+    <section class="mentions-legales">
+        <h2>Apprends une nouvelle langue avec la méthode "See To Learn" !</h2>
+        <div>
+            <div class="imageRonde">
+                <img src="{{ asset('bundles/img/school.png') }}" alt="School"/>
+            </div>
+            <p>Nous avons contacter que, durant ces dernières années, les nouvelles technologies ont grandement évoluer. Cependant, l'enseignement des langues est resté la même.</p>
+            <p>C'est pourquoi on a réfléchis à une nouvelle méthode d'apprendre une langue en utilisant les nouvelles technologies.</p>
+            <p>See To Learn vous propose donc d'apprendre une angue en lisant des textes qui vous sont suggérer selon votre niveau et votre avancement.</p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>See To Learn ©</p>
+</footer>
+
+
+<!-- script pour le feed twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script type="text/javascript" src="{{ asset('bundles/js/jquery-3.1.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/js/main.js') }}"></script>
+</body>
+</html>

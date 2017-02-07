@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Tableau de bord</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/lecture.css">
+
+		<!-- css pour le calendrier -->
+		<link rel='stylesheet prefetch' href='http://crsten.github.io/datepickk/dist/datepickk.min.css'>
+	</head>
+	<body>
+		<header>
+			<button class="buttonBurger">
+			    <span class="buttonBurger__top"></span>
+			    <span class="buttonBurger__middle"></span>
+			    <span class="buttonBurger__bottom"></span>
+			</button>
+			<div class="menu">
+				<div>
+					<img src="img/img-profil.jpg" alt="image profil">
+				</div>
+				<h3>Gautier Maire</h3>
+				<nav>
+					<ul>
+						<li><a class="activeLink" id="us-tab-bord" href="#">Tableau de bord</a></li>
+						<li><a id="us-textes" href="#">Textes</a></li>
+						<li><a id="us-question" href="#">Une question ?</a></li>
+						<li><a id="us-twitter" href="#">Twitter</a></li>
+						<li><a id="us-mentions-legales" href="#">Mentions légales</a></li>
+					</ul>
+				</nav>
+			</div>
+			<img src="img/logo.png" alt="logo_See2Learn" />
+			<button class="signOut" href="#">Déconnexion</button>
+		</header>
+
+		<section id="tableau">
+			<div class="langue row">
+				<p class="col-xs-6">Langue à apprendre :</p>
+				<form class="col-xs-6">
+					<select>
+						<option>Anglais</option>
+						<option>Français</option>
+						<option>Espagnol</option>
+					</select>
+				</form>
+			</div>
+
+			<div class="row rowFirst">
+
+				<div class="col-xs-6">
+					<div id="infos">
+						<h3>Informations personnelles</h3>
+
+						<div class="block">
+							<div class="row">
+								<div class="col-xs-4 img-infos-pers">
+									<div>
+										<img src="img/img-profil.jpg">
+									</div>
+								</div>
+								<div class="col-xs-8 donneePerso">
+									<p>Nom : MAIRE</p>
+									<p>Prénom : Gautier</p>
+									<p>Mot de passe : az****</p>
+								</div>
+							</div>
+									
+							<p>Email : gautmaire45@gmail.com</p>
+							<button>Modifier</button>
+						</div>
+					</div>
+
+					<div id="cal">
+						<h3>Calendrier</h3>
+
+						<div class="block">
+							<div id="datepicker"></div>
+							<!-- <p><img src="img/red.png">500 mots et +</p>
+							<p><img src="img/orange.png">entre 499 et 300 mots</p>
+							<p><img src="img/yellow.png">299 mots et -</p> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xs-6">
+					<div id="stats">
+						<h3>Statistiques</h3>
+
+						<div class="block">
+							<div>
+								<div class="number-grey">
+									<span class="num">16</span>
+								</div>
+								<p>Textes lus</p>
+							</div>
+							<div>
+								<div class="number-blue">
+									<span class="num">1 600</span>
+								</div>
+								<p>Mots lus</p>
+							</div>
+							<div>
+								<div class="number-yellow"><span class="num">45%</span></div><p>Des mots en anglais</p>
+							</div>
+							<div>
+								<div class="number-grey"><span class="num">55%</span></div><p>Moyennes utilisateurs</p>
+							</div>
+							<div>
+								<div class="number-blue"><span class="num">4H</span></div><p>Temps de lecture</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row" id="graph">
+				<h3>Graphiques</h2>
+			</div>
+
+		</section>
+
+
+
+
+		<!-- script pour le calendrier -->
+		<script src='http://crsten.github.io/datepickk/dist/datepickk.min.js'></script>
+		<script src="js/calendar.js"></script>
+
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+</html>

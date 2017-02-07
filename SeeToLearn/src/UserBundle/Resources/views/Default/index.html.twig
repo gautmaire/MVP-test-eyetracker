@@ -1,0 +1,7 @@
+Hello World!
+<div class="login ">
+    {% if app.user %}
+    {% else %}
+        <a href="{{ path('fos_user_security_logout') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
+    {% endif %}
+</div>

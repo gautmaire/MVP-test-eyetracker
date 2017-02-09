@@ -34,6 +34,14 @@ $(document).ready(function() {
 		
 		
 	})
+
+
+	// témoignage
+	$('#quote-carousel').carousel({
+	pause: true, interval: 10000,
+	});
+
+
 	
 });
 

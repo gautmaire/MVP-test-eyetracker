@@ -15,9 +15,10 @@
   /* 02-4 Aside */
   /* 02-5 Button */
   /* 02-6 Footer */
-/** 03 CSS pour la page TABLEAU */
+/** 03 CSS pour la page TABLEAU de bord */
   /* 03-1 Code général */
   /* 03-2 CSS des différentes DIV */
+/** 04 CSS pour la page Textes */
 
 
 /** 00 CSS général **/
@@ -110,7 +111,7 @@ header > img{
 /* les barres du menu */
 .buttonBurger{
   z-index: 2;
-  position: relative;
+  position: fixed;
   cursor: pointer;
   background: none;
   border: none;
@@ -118,7 +119,7 @@ header > img{
   height: 30px;
   width: 40px;
   padding:0;
-  top: 13px;
+  top: 38.5px;
   left: 25px;
 
   transition: all 1s ease;
@@ -309,7 +310,7 @@ header > img{
 	margin-bottom: 20px;
 	font-family: 'Quicksand';
 	font-weight: bold;
-	font-size: 1.8em;
+	font-size: 1.9em;
 }
 
 .canvas{
@@ -318,9 +319,9 @@ header > img{
 	padding: 20px 20px;
 	background: white;
 	text-align: justify;
-	font-family: 'abeezee';
-	font-size: 1.6em;
-	line-height: 2.2em;
+	font-family: 'ABeeZee';
+	font-size: 1.8em;
+	line-height: 2.4em;
 
 	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
@@ -345,7 +346,7 @@ header > img{
 /* 02-4 Aside */
 aside{
 	position: fixed;
-	right: 20px;
+	right: 3%;
 	top: 45%;
 	width: 90px;
 }
@@ -373,6 +374,54 @@ aside > div > p {
 	font-family: 'Quicksand';
 	font-weight: bold;
 	font-size: 2em;
+}
+
+.lastWord {
+	width: 160px;
+	border: 2px solid #4A4E4D;
+	margin-left: -40px;
+	margin-bottom: 20px;
+
+	/*-webkit-border-top-left-radius:7px;
+	-moz-border-top-left-radius:7px;
+	border-top-left-radius: 7px;
+	-webkit-border-top-right-radius:7px;
+	-moz-border-top-right-radius:7px;
+	border-top-right-radius: 7px;*/
+
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+	border-radius: 7px;
+}
+
+.lastWord p:first-child {
+	color: white;
+	background: #4A4E4D;
+	padding: 5px 0;
+	text-align: center;
+	font-family: 'Quicksand';
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	font-size: 1.6em;
+
+	-webkit-border-top-left-radius:4px;
+	-moz-border-top-left-radius:4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-top-right-radius:4px;
+	border-top-right-radius: 4px;
+}
+
+.lastWord p:last-child {
+	padding: 5px 0;
+	text-align: center;
+	font-family: 'ABeeZee';
+	font-style: italic;
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	font-size: 1.4em;
 }
 
 
@@ -460,8 +509,12 @@ aside > div > p {
 	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+
 	background: white;
-	font-family: 'abeezee';
+	font-family: 'ABeeZee';
 }
 
 .rowFirst {
@@ -493,11 +546,18 @@ aside > div > p {
 	background: #4A4E4D;
 	padding: 20px 0;
 	text-align: center;
-	font-family: 'quicksand';
+	font-family: 'Quicksand';
 	display: inline-block;
 	width: 100%;
 	margin: 0;
 	font-size: 1.5em;
+
+	-webkit-border-top-left-radius:4px;
+	-moz-border-top-left-radius:4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-top-right-radius:4px;
+	border-top-right-radius: 4px;
 }
 
 .block {
@@ -636,3 +696,170 @@ aside > div > p {
 	color: #4A4E4D;
 	border: 3px solid #4A4E4D;
 }
+
+
+
+
+
+/** 04 CSS pour la page Textes */
+
+
+.glyphicon { margin-right:5px; }
+.thumbnail
+{
+	height: 270px;
+	max-width: 350px;
+    margin-bottom: 60px;
+    padding: 0px;
+    border: none;
+
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+
+	background: white;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+	/*height: 200px;
+    margin: 10px;
+    text-align: justify;
+    text-overflow: ellipsis;*/
+
+    display: block;
+	/* Fallback for non-webkit */
+	display: -webkit-box;
+	max-width: 320px;
+	height: 190px;
+	/* Fallback for non-webkit */
+	margin: 10px;
+	font-size: 1em;
+	line-height: 1.4;
+	-webkit-line-clamp: 10;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.texteConteneur > h2 {
+	text-align: center;
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.8em;
+}
+
+.texteConteneur > p {
+	text-align: center;
+	font-family: 'ABeeZee';
+	font-style: italic;
+	font-size: 1em;
+}
+
+
+#textes {
+	width: 80%;
+	margin: 30px auto;
+}
+
+#textes h3{
+	color: white;
+	background: #4A4E4D;
+	padding: 15px 0;
+	text-align: center;
+	font-family: 'Quicksand';
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	font-size: 1.5em;
+
+	-webkit-border-top-left-radius:4px;
+	-moz-border-top-left-radius:4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-top-right-radius:4px;
+	border-top-right-radius: 4px;
+}
+
+.thumbnail > div {
+	margin-top: 25px;
+}
+
+.thumbnail > div button {
+
+}
+.thumbnail > div button {
+	font-family: 'Quicksand';
+	font-weight: bold;
+	width: 50px;
+	color: #F6CD61;
+	border: 3px solid #F6CD61;
+	background: none;
+	font-size: 1em;
+}
+
+.thumbnail > div button:hover, .thumbnail > div button:active, .thumbnail > div button:focus {
+  color: white;
+  background: #F6CD61;
+  outline: none;
+}
+
+.thumbnail > div p {
+	margin-top: 5px;
+	font-family: 'ABeeZee';
+	font-style: italic;
+	font-size: 1em;
+}
+
+
+
+
+

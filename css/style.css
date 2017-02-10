@@ -1,48 +1,244 @@
-/** CODE GENERAL **/
-/* Header */
-	header{
-	  background: #efefef;
+/** Police **/
+	@font-face {
+		font-family: "Quicksand";
+		font-weight: 300;
+		src: url('../fonts/quicksand/Quicksand-Light.ttf');
+	}
+	@font-face {
+		font-family: "Quicksand";
+		font-weight: normal;
+		src: url('../fonts/quicksand/Quicksand-Regular.ttf');
+	}
+	@font-face {
+		font-family: "Quicksand";
+		font-weight: 500;
+		src: url('../fonts/quicksand/Quicksand-Medium.ttf');
+	}
+	@font-face {
+		font-family: "Quicksand";
+		font-weight: bold;
+		src: url('../fonts/quicksand/Quicksand-Bold.ttf');
+	}
+	@font-face {
+		font-family: "ABeeZee";
+		font-weight: normal;
+		font-style: normal;
+		src: url('../fonts/abeezee/ABeeZee-Regular.ttf');
+	}
+	@font-face {
+		font-family: "ABeeZee-Italic";
+		font-weight: normal;
+		font-style: italic;
+		src: url('../fonts/abeezee/ABeeZee-Italic.ttf');
 	}
 
-	h1 img{
-		
+/** CSS mise en page **/
+   	body{
+		background: #EFEFEF;
 	}
 
-/* div (section + aside) */
-	div{
-	  background: #0E9AA7;
+	.box{
+		width: 800px;
+		height: 600px;
+		font-size: 40px;
 	}
 
-	aside, section{
-	  background: white; 
-	  border: 1px solid grey;
-	}
-
-	section{
-		padding: 0;
-	}
-
-	nav ul{
-	  color: black;
-	}
-	nav ul li{
-		list-style-type: none;
-	}
-	nav ul li a {
-		color: black;
-	}
-
-/* Footer */
-	footer{
-	  background: #0E9AA7;
-	  text-align: center;
-	  color: white;
-	}
-
-/* Style de texte */
 	h2{
-	  color: white;
-	  background-color: #4A4E4D;
-	  margin: 0;
-	  padding: 0;
+		color: #f78972;
+		font-family: "ABeeZee";
+	}
+
+	p{
+		color: #1c9ba8;
+		font-size: 1.1em;
+		font-family: "Quicksand";
+	}
+
+	.color{
+		color: #f58972;
+	}
+
+	.plus{
+		font-size: 1.3em;
+		font-weight: bold;
+	}
+
+/** step-1 **/
+	#step-1{
+		display: block;
+		padding: 30px 50px;
+		/*text-shadow: 0 2px 2px rgba(0, 0, 0, 1);*/
+		display: inline;
+		text-align: center;
+		color: #4a4e4d;
+	}
+	#step-1 p{
+		opacity: 0;
+	}
+	#step-1.active p{
+		animation-duration: 1s;
+		animation-name: apparaitre;
+		animation-delay: 0.5s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes apparaitre {
+	  from {
+	    opacity: 0;
+	  }
+
+	  to {
+	    opacity: 1;
+	  }
+	}
+
+/** step-2 **/
+	#step-2{
+		position: relative;
+	}
+	#step-2 h2{
+		font-size: 2.5em;
+	}
+	#step-2 img{
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	#step-2 > p:nth-child(3){
+		position: absolute;
+    	top: -10px;
+    	right: 67px;
+    	text-align: center;
+    	display: inline-block;
+    	width: 100px;
+    	color: white;
+	}
+	#step-2 > p:nth-child(4){
+		padding-top: 0;
+   		margin-top: 0;
+    	width: 100%;
+    	display: inline-block;
+	}
+	#step-2 > p:nth-child(5){
+		font-size: 0.9em;
+		font-style: italic;
+	}
+
+/** step-3 **/
+	#step-3 img{
+		float: right;
+	}
+
+/** step-4 **/
+	#step-4{
+		text-align: center;
+	}
+	#step-4 h2{
+		font-size: 2em;
+	}
+
+/** step-5 **/
+	#step-5{
+		line-height: 4em;
+		width: 850px;
+	}
+	#step-5 h2, #step-5 p{
+		display: inline;
+	}
+	#step-5 h2{
+		font-size: 2em;
+	}
+	#step-5 p{
+		vertical-align: top;
+	}
+	#step-5 .plus{
+		line-height: 3em;
+	}
+	#step-5 > h2:nth-child(5){
+		font-size: 1.4em;
+	}
+
+/** step-6 **/
+	#step-6 p{
+		text-align: center;
+	}
+	#step-6 img{
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+		padding: 35px 0;
+		display: inline-block;
+	}
+
+/** step-7 **/
+	#step-7 img{
+		width: 80%;
+	}
+
+/** step-8 **/
+	#step-8 img{
+		width: 30%;
+		height: auto;
+	}
+
+/** expli **/
+	.expli{
+		opacity: 0.2;
+	}
+
+	.expli.active{
+	  animation-duration: 1s;
+	  animation-name: opacity;
+	  animation-delay: 0.5s;
+	  animation-fill-mode: forwards;
+	}
+
+	@keyframes opacity {
+	  from {
+	    opacity: 0.2;
+	  }
+
+	  to {
+	    opacity: 1;
+	  }
+	}
+
+	.expli.plus{
+		font-weight: bolder;
+	}
+
+/** rotate **/
+	.active .rotate{/** rotation vers le haut à droite **/
+		display: inline-block;
+		animation-duration: 0.5s;
+		animation-name: rotate;
+		animation-delay: 0.5s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes rotate{
+		from{
+			transform: rotate(0deg);
+		}
+		to{
+			transform: rotate(-5deg);
+		}
+	}
+
+/** rotate_1 **/
+	.active .rotate_1{/** rotation vers le haut à gauche **/
+		display: inline-block;
+		animation-duration: 0.5s;
+		animation-name: rotate1;
+		animation-delay: 0.5s;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes rotate1{
+		from{
+			transform: rotate(0deg);
+		}
+		to{
+			transform: rotate(5deg);
+		}
 	}

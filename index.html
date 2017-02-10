@@ -1,47 +1,103 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Démonstration See2Learn</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		<script src="js/jquery.js"></script>
-	</head>
-	<body>
-		<header class="row">
-			<h1><img class="col-xs-2" src="img/logo.png" alt="logo_See2Learn"></h1>
-			<button>Incription</button>
-			<button>Connexion</button>
-		</header>
-
-		<div class="col-xs-12">
-			<aside class="col-xs-2">
-				<nav>
-					<ul>
-						<li><a href="#">Le concept</a></li>
-						<li><a href="#">Comment ça marche ?</a></li>
-						<li><a href="#">L'Eye Tracker</a></li>
-						<li><a href="#">Témoignages</a></li>
-						<li><a href="#">Twitter</a></li>
-						<li><a href="#">L'équipe</a></li>
-						<li><a href="#">Mentions légales</a></li>
-					</ul>
-				</nav>
-			</aside>
-
-			<section class="col-xs-6">
-				<h2>Apprends une nouvelle langue avec la méthode "See To Learn" !</h2>
-				<img class="col-xs-2" src="img/logo.png">
-				<p>Nous avons contacter que, durant ces dernières années, les nouvelles technologies ont grandement évoluer. Cependant, l'enseignement des langues est resté la même.</p>
-				<p>C'est pourquoi on a réfléchis à une nouvelle méthode d'apprendre une langue en utilisant les nouvelles technologies.</p>
-				<p>See To Learn vous propose donc d'apprendre une angue en lisant des textes qui vous sont suggérer selon votre niveau et votre avancement.</p>
-			</section>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>SeeToLearn</title>
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="impress">
+		<!-- step-1 -->
+		<div class="step box" data-x="0" data-y="0">
+			<img src="img/logo.png">
+			<p>SeeToLearn, la méthode innovante et autonome d'apprendre une nouvelle langue</p>
+		</div>
+		<!-- step-2 -->
+		<div class="step box" data-x="0" data-y="1000" data-rotate-y="90">
+			<h2>2/3</h2>
+			<img src="img/france.png">
+			<p>sur 65 millions</p>
+			<p>des <span class="plus rotate_1">Français</span> ne parle <span class="plus ">aucune</span><span class="plus rotate"> langue étrangère</span> couramment</p>
+			<p>pour l'anglais <span class="color">1/5</span> le parle couramment</p>
+		</div>
+		<!-- step-3 -->
+		<div class="step box" data-x="2000" data-y="1000">
+			<h2>1/3</h2>
+			<p>des <span class="plus rotate">Français</span> estime qu'il est <span class="plus">utile d'apprendre une langue</span> étrangère</p>
+			<img src="img/langue.png">
+		</div>
+		<!-- step-4 -->
+		<div class="step box" data-x="2000" data-y="2000" data-rotate-y="180">
+			<p>diversité des langues en <span class="plus">France</span></p>
+			<h2>400</h2>
+			<p><span class="plus">langues</span> et dialectes <spann class="plus">parlés</spann></p>
+		</div>
+		<!-- step-5 -->
+		<div class="step box" data-x="0" data-y="2000" data-rotate="115">
+			<h2>14%</h2>
+			<p><span class="plus">Lv1</span> arrive à un bon niveau</p>
+			<h2>11%</h2>
+			<p><span class="plus">Lv2</span> arrive à un bon niveau</p>
+			<h2>40%</h2>
+			<p>des<span class="plus"> Français </span>ont un bon niveau</p>
+		</div>
+		<!-- step-6 -->
+		<div class="step box" data-x="0" data-y="3000" data-rotate-y="270">
+			<h2>25ème</h2>
+			<p><span class="plus">rang</span> dans le classement du <img src="img/TOEFL.png"> le <span class="plus">test international anglais</span></p>
+		</div>
+		<!-- step-7 -->
+		<div class="step box" data-x="2000" data-y="3000">
+			<h2>Eye Tracking</h2>
+			<p>mesure des <span class="plus">mouvements des yeux</span></p>
+			<img src="img/eyetracking.png">
+		</div>
+		<!-- step-8 -->
+		<div class="step box" data-x="2000" data-y="4100" data-rotate-z="90">
+			<h2>Infrarouge</h2>
+			<p><span class="plus">inoffensif</span> pour l'oeil</p>
 		</div>
 
-		<footer>
-			<p>See To Learn ©</p>
-		</footer>
-		<!--script src="js/main.js"></script-->
-	</body>
+		<!-- step-9 -->
+		<div class="step box expli" data-x="2000" data-y="5000">
+			<p><span class="plus">Inscription</span> sur le site</p>	
+		</div>
+		<!-- step-10 -->
+		<div class="step box expli" data-x="2400" data-y="5200" data-rotate-y="90">
+			<p><span class="plus">Réception</span> de l'EyeTracker</p>	
+		</div>
+		<!-- step-11 -->
+		<div class="step box expli" data-x="2800" data-y="5400" data-rotate-y="180">
+			<p><span class="plus">Installation</span> de l'EyeTracker avec la documentation du site</p>	
+		</div>
+		<!-- step-12 -->
+		<div class="step box expli" data-x="3200" data-y="5600" data-rotate-y="270">
+			<p>Commencer à lire un texte</p>
+		</div>
+		<!-- step-13 -->
+		<div class="step box expli" data-x="3600" data-y="5800" data-rotate-y="90">
+			<p>L'EyeTracker suit vos yeux avec de l'infra-rouge</p>
+		</div>
+		<!-- step-14 -->
+		<div class="step box expli" data-x="4000" data-y="6000" data-rotate-y="270">
+			<p><span class="plus">Identification</span> des mots lus</p>
+		</div>
+		<!-- step-15 -->
+		<div class="step box expli" data-x="4400" data-y="6200" data-rotate-y="180">
+			<p><span class="plus">Comparaison</span> avec la base de données</p>
+		</div>
+		<!-- step-16 -->
+		<div class="step box expli" data-x="4800" data-y="6400">
+			<p><span class="plus">Proposition</span> de nouveaux textes plus compliqués</p>
+		</div>
+		<!-- step-17 -->
+		<div class="step box expli" data-x="5200" data-y="6600" data-rotate-y='90'>
+			<p>Langue apprise, place à la pratique</p>
+		</div>
+	</div>
+	<script src="js/impress.js"></script>
+	<script>
+		impress().init();
+	</script>
+</body>
 </html>

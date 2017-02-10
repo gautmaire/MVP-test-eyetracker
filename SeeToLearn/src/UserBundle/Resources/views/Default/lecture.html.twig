@@ -1,0 +1,83 @@
+{% extends 'IndexBundle:Default:headerfooter.html.twig' %}
+
+{% block title %}
+    <title>Lecture</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/css/lecture.css') }}">
+{% endblock %}
+
+{% block content %}
+<header>
+    <button class="buttonBurger">
+        <span class="buttonBurger__top"></span>
+        <span class="buttonBurger__middle"></span>
+        <span class="buttonBurger__bottom"></span>
+    </button>
+    <div class="menu">
+        <div>
+            <img src="{{ asset('bundles/img/img-profil.jpg') }}" alt="image profil">
+        </div>
+        <h3>Gautier Maire</h3>
+        <nav>
+            <ul>
+                <li><a id="us-tab-bord" href="#">Tableau de bord</a></li>
+                <li><a class="activeLink" id="us-textes" href="#">Textes</a></li>
+                <li><a id="us-question" href="#">Une question ?</a></li>
+                <li><a id="us-twitter" href="#">Twitter</a></li>
+                <li><a id="us-mentions-legales" href="#">Mentions légales</a></li>
+            </ul>
+        </nav>
+    </div>
+    <img src="{{ asset('bundles/img/logo.png') }}" alt="logo_See2Learn" />
+    {%  if app.user %}
+        <a href="/logout"> <button class="signOut">Déconnexion</button> </a>
+    {% endif %}
+</header>
+
+<section class="lecture">
+    <h2>{{ texte.titre }}</h2>
+    <div class="canvas">
+        <p>
+            {{ texte.contenu }}
+        </p>
+    </div>
+</section>
+<aside>
+    <div class="lastWord">
+        <p class="">Dernier mot lu</p>
+        <p>Constructeur</p>
+    </div>
+    <div>
+        <div>
+            <p class="number">42</p>
+        </div>
+        <p>Mots lus</p>
+    </div>
+    <div>
+        <div>
+            <p class="number">26s</p>
+        </div>
+        <p>Temps de lecture</p>
+    </div>
+</aside>
+
+<section class="difficulty row">
+    <div class="col-xs-8 col-md-6 col-lg-5">
+        <p class="">Avez-vous trouver ce texte difficile ?</p>
+        <p class="">(1 si vous avez tout compris, 4 si vous avez rien compris)</p>
+    </div>
+    <form class="evaluation col-xs-4 col-md-6 col-lg-7">
+        <select>
+            <option>-</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        <button>Terminer</button>
+    </form>
+</section>
+
+{% endblock %}

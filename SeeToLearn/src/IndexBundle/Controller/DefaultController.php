@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/index")
+     * @Route("/")
      */
     public function indexAction()
     {
@@ -16,15 +16,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/lecture")
-     */
-    public function lectureAction()
-    {
-        return $this->render('IndexBundle:Default:lecture.html.twig');
-    }
-
-    /**
-     * @Route("/tableau")
+     * @Route("/tableau", name="tableau")
      */
     public function tableauAction()
     {

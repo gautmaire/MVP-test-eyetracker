@@ -16,7 +16,7 @@ security:
                 check_path: /login_check
                 login_path: /login
                 csrf_token_generator: security.csrf.token_manager
-                default_target_path:  /
+                default_target_path:  /tableau
             logout:
                 path:   /logout
                 target: /

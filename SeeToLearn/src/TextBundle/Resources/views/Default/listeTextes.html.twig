@@ -1,0 +1,99 @@
+{% extends 'IndexBundle:Default:headerfooter.html.twig' %}
+
+{% block title %}
+    <title> Textes </title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="css/users.css">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <button class="buttonBurger">
+            <span class="buttonBurger__top"></span>
+            <span class="buttonBurger__middle"></span>
+            <span class="buttonBurger__bottom"></span>
+        </button>
+        <div class="menu">
+            <div>
+                <img src="{{ asset('bundles/img/img-profil.jpg') }}" alt="image profil">
+            </div>
+            <h3>Gautier Maire</h3>
+            <nav>
+                <ul>
+                    <li><a id="us-tab-bord" href="tableau-bord.html">Tableau de bord</a></li>
+                    <li><a class="activeLink" id="us-textes" href="textes.html">Textes</a></li>
+                    <li><a id="us-question" href="#">Une question ?</a></li>
+                    <li><a id="us-twitter" href="#">Twitter</a></li>
+                    <li><a id="us-mentions-legales" href="#">Mentions légales</a></li>
+                </ul>
+            </nav>
+        </div>
+        <img src="{{ asset('bundles/img/logo.png') }}" alt="logo_See2Learn" />
+        <a href="/logout"><button class="signOut">Déconnexion</button></a>
+    </header>
+
+    <section>
+        <div class="langue row">
+            <p class="col-xs-6">Langue à apprendre :</p>
+            <form class="col-xs-6" method="POST" action="/listeTextes">
+                <select name="langue">
+                    <option> -- </option>
+                    <option> anglais </option>
+                    <option> français </option>
+                    <option> espagnol </option>
+                </select>
+                <button> Valider </button>
+            </form>
+        </div>
+
+        <div class="texteConteneur">
+        {% if(langue == '') %}
+            <h2>Propositions de textes</h2>
+            <p>Grâce aux données que nous récoltons lors de votre lecture, nous vous proposons les textes les plus adaptés pour votre apprentissage.</p>
+            {% for text in texts %}
+            <div id="textes" class="row list-group">
+                <div class="item  col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <h3> Titre de l'oeuvre: {{ text.titre }}</h3>
+                        <p class="group inner list-group-item-text"> Auteur de l'oeuvre: {{ text.auteur }}</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-9">
+                                <p>31% de nouveaux mots</p>
+                            </div>
+                            <div class="col-xs-12 col-md-3">
+                                <a class="" href="{{ path('lecture', {id: text.id}) }}"><button>See</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <h2>Propositions de textes en {{ langue }}</h2>
+            <p>Grâce aux données que nous récoltons lors de votre lecture, nous vous proposons les textes les plus adaptés pour votre apprentissage.</p>
+            {% for text in texts %}
+                <div id="textes" class="row list-group">
+                    {% if(text.langue == langue) %}
+                        <div class="item  col-xs-4 col-lg-4">
+                            <div class="thumbnail">
+                                <h3> Titre de l'oeuvre: {{ text.titre }}</h3>
+                                <p class="group inner list-group-item-text"> Auteur de l'oeuvre: {{ text.auteur }}</p>
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-9">
+                                        <p>31% de nouveaux mots</p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-3">
+                                        <a class="" href="{{ path('lecture', {id: text.id}) }}"><button>See</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </section>
+{% endblock %}

@@ -31,6 +31,13 @@ class Text
     /**
      * @var string
      *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="langue", type="string", length=255)
      */
     private $langue;
@@ -63,6 +70,30 @@ class Text
     public function setAuteur($auteur)
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Text
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
 
         return $this;
     }

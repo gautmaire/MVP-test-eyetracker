@@ -20,7 +20,11 @@
         <div>
             <img src="{{ asset('bundles/img/img-profil.jpg') }}" alt="image profil">
         </div>
-        <h3>Gautier Maire</h3>
+        <h3>
+            {% if app.user %}
+                {{ app.user.prenom }}
+            {% endif %}
+        </h3>
         <nav>
             <ul>
                 <li><a class="activeLink" id="us-tab-bord" href="#">Tableau de bord</a></li>
@@ -61,14 +65,34 @@
                             </div>
                         </div>
                         <div class="col-xs-8 donneePerso">
-                            <p>Nom : MAIRE</p>
-                            <p>Prénom : Gautier</p>
-                            <p>Mot de passe : az****</p>
+                            <p>Nom :
+                                {% if app.user %}
+                                    {{ app.user.nom }}
+                                {% endif %}
+                            </p>
+                            <p>Prénom :
+                                {% if app.user %}
+                                    {{ app.user.prenom }}
+                                {% endif %}
+                            </p>
+                            <p>Nom d'utilisateur :
+                                {% if app.user %}
+                                    {{ app.user.username }}
+                                {% endif %}
+                            </p>
                         </div>
                     </div>
 
-                    <p>Email : gautmaire45@gmail.com</p>
-                    <button>Modifier</button>
+                    <p>Email :
+                        {% if app.user %}
+                            {{ app.user.email }}
+                        {% endif %}
+                    </p>
+                        {% if app.user %}
+                            <a href="/update">
+                                <button>Modifier</button>
+                            </a>
+                        {% endif %}
                 </div>
             </div>
 

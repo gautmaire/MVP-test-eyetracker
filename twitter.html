@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Twitter</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/users.css">
+
+	</head>
+	<body>
+		<header>
+			<button class="buttonBurger">
+			    <span class="buttonBurger__top"></span>
+			    <span class="buttonBurger__middle"></span>
+			    <span class="buttonBurger__bottom"></span>
+			</button>
+			<div class="menu">
+				<div>
+					<img src="img/img-profil.jpg" alt="image profil">
+				</div>
+				<h3>Gautier Maire</h3>
+				<nav>
+					<ul>
+						<li><a id="us-tab-bord" href="tableau-bord.html">Tableau de bord</a></li>
+						<li><a id="us-textes" href="textes.html">Textes</a></li>
+						<li><a id="us-question" href="#">Une question ?</a></li>
+						<li><a class="activeLink" id="us-twitter" href="#">Twitter</a></li>
+						<li><a id="us-mentions-legales" href="#">Mentions légales</a></li>
+					</ul>
+				</nav>
+				<p>See To Learn © 2017</p>
+			</div>
+			<img src="img/logo.png" alt="logo_See2Learn" />
+			<a href="index.html"><button class="signOut">Déconnexion</button></a>
+		</header>
+
+		<section>
+
+			<h2 class="titreTwitter">Suivez-nous sur Twitter pour vous tenir au courant de nos actualités !</h2>
+
+			<div class="wrap-twitter">
+				<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/SeeTo2Learn" data-height="600" data-width="600">Tweets by @SeeTo2Learn</a>
+			</div>
+
+		</section>
+
+
+
+		<!-- script pour le feed twitter -->
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+</html>

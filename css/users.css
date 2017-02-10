@@ -19,6 +19,8 @@
   /* 03-1 Code général */
   /* 03-2 CSS des différentes DIV */
 /** 04 CSS pour la page Textes */
+/** 05 CSS pour la page Une question ? */
+/** 06 CSS pour la page Twitter */
 
 
 /** 00 CSS général **/
@@ -97,6 +99,14 @@ header > img{
   border: 3px solid #F6CD61;
   background: none;
   font-size: 1.2em;
+
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+
+	box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
 }
 
 .signOut:hover, .signOut:active, .signOut:focus {
@@ -866,6 +876,157 @@ aside > div > p {
 	font-style: italic;
 	font-size: 1em;
 }
+
+
+
+
+/** 05 CSS pour la page Une question ? */
+
+.titreQuestion {
+	font-family: 'Quicksand';
+	font-style: bold;
+	font-size: 1.6em;
+	text-align: center;
+	margin-top: 10%;
+	margin-bottom: 80px;
+}
+
+.contact {
+	width: 60%;
+	margin: 0 auto;
+}
+
+#contact{
+    padding:10px 0 10px;
+  }
+
+  .contact-text{
+    margin:45px auto;
+  }
+
+  .mail-message-area{
+    width:100%;
+    padding:0 15px;
+  }
+
+  .mail-message{
+    width: 100%;
+    background:rgba(255,255,255, 0.8) !important;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    transition: all 0.7s;
+    margin:0 auto;
+    border-radius: 0;
+  }
+
+  .not-visible-message{
+    height:0px;
+    opacity: 0;
+  }
+
+  .visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+  }
+
+/* Input Styles */
+
+  .form{
+    width: 100%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  .form:hover{
+    border:1px solid #F6CD61;
+  }
+
+  .form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #F6CD61;
+  }
+
+  .textarea{
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+  }
+  
+
+/* Send Button Styles */
+
+  .form-btn{
+    width:180px;
+    display: block;
+    height: auto;
+    padding:15px;
+    color:#fff;
+    background:#8BC3A3;
+    border:none;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+
+    font-family: 'Quicksand';
+	font-weight: bold;
+	color: #F6CD61;
+	border: 3px solid #F6CD61;
+	background: none;
+	font-size: 1.2em;
+    text-align:center;
+
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .form-btn:hover{
+    background:#F6CD61;
+    color:white;
+	outline: none;
+  }
+
+  .form-btn:active{
+    opacity: 0.9;
+  }
+
+input {
+    position: relative;
+    z-index: 9999;
+}
+
+
+
+/** 06 CSS pour la page Twitter */
+
+
+.titreTwitter {
+	font-family: 'Quicksand';
+	font-style: bold;
+	font-size: 1.6em;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 40px;
+
+}
+
+
+.wrap-twitter {
+	width: 600px;
+	margin: 0 auto;
+}
+
 
 
 

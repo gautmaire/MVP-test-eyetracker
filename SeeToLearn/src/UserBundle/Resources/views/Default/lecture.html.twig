@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="{{ asset('bundles/css/lecture.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/css/users.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -19,25 +19,26 @@
         <div>
             <img src="{{ asset('bundles/img/img-profil.jpg') }}" alt="image profil">
         </div>
-        <h3>Gautier Maire</h3>
+        {% if app.user %}
+            <h3>{{ app.user.prenom }} {{ app.user.nom }}</h3>
+        {% endif %}
         <nav>
             <ul>
-                <li><a id="us-tab-bord" href="#">Tableau de bord</a></li>
-                <li><a class="activeLink" id="us-textes" href="#">Textes</a></li>
+                <li><a id="us-tab-bord" href="/tableau">Tableau de bord</a></li>
+                <li><a class="activeLink" id="us-textes" href="/textes">Textes</a></li>
                 <li><a id="us-question" href="#">Une question ?</a></li>
-                <li><a id="us-twitter" href="#">Twitter</a></li>
+                <li><a id="us-twitter" href="/twitter">Twitter</a></li>
                 <li><a id="us-mentions-legales" href="#">Mentions légales</a></li>
             </ul>
         </nav>
+        <p>See To Learn © 2017</p>
     </div>
     <img src="{{ asset('bundles/img/logo.png') }}" alt="logo_See2Learn" />
-    {%  if app.user %}
-        <a href="/logout"> <button class="signOut">Déconnexion</button> </a>
-    {% endif %}
+    <a href="/logout"><button class="signOut">Déconnexion</button></a>
 </header>
 
 <section class="lecture">
-    <h2>{{ texte.titre }}</h2>
+    <h2> {{ texte.titre }}</h2>
     <div class="canvas">
         <p>
             {{ texte.contenu }}
@@ -68,7 +69,7 @@
         <p class="">Avez-vous trouver ce texte difficile ?</p>
         <p class="">(1 si vous avez tout compris, 4 si vous avez rien compris)</p>
     </div>
-    <form class="evaluation col-xs-4 col-md-6 col-lg-7">
+    <form method="POST" action="/textes" class="evaluation col-xs-4 col-md-6 col-lg-7">
         <select>
             <option>-</option>
             <option>1</option>
@@ -79,5 +80,4 @@
         <button>Terminer</button>
     </form>
 </section>
-
 {% endblock %}

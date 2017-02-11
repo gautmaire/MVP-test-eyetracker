@@ -22,4 +22,12 @@ class DefaultController extends Controller
     {
         return $this->render('IndexBundle:Default:tableau.html.twig');
     }
+
+    /**
+     * @Route("/twitter")
+     */
+    public function twitterAction()
+    {
+        return $this->render('IndexBundle:Default:twitter.html.twig');
+    }
 }

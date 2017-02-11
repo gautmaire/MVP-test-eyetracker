@@ -9,14 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/listeTextes")
+     * @Route("/textes")
      */
-    public function listeTextesAction(Request $request)
+    public function texteAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('TextBundle:Text');
         $langue = $request->request->get('langue');
-        return $this->render('TextBundle:Default:listeTextes.html.twig',
+        return $this->render('TextBundle:Default:textes.html.twig',
             array('texts' => $repo->findAll(), 'langue' => $langue)
         );
     }

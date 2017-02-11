@@ -45,7 +45,14 @@ class Text
     /**
      * @var string
      *
-     * @ORM\Column(name="contenu", type="string", length=255)
+     * @ORM\Column(name="resume", type="text")
+     */
+    private $resume;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;
 
@@ -133,6 +140,30 @@ class Text
     }
 
     /**
+     * Set resume
+     *
+     * @param string $resume
+     *
+     * @return Text
+     */
+    public function setResume($resume)
+    {
+        $this->resume = $resume;
+
+        return $this;
+    }
+
+    /**
+     * Get resume
+     *
+     * @return Text
+     */
+    public function getResume()
+    {
+        return $this->resume;
+    }
+
+    /**
      * Set contenu
      *
      * @param string $contenu
@@ -149,7 +180,7 @@ class Text
     /**
      * Get contenu
      *
-     * @return string
+     * @return Text
      */
     public function getContenu()
     {

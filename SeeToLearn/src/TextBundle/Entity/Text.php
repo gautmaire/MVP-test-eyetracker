@@ -2,7 +2,9 @@
 
 namespace TextBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\User;
 
 /**
  * Text
@@ -43,19 +45,36 @@ class Text
     private $langue;
 
     /**
-     * @var string
+     * @var Text
      *
      * @ORM\Column(name="resume", type="text")
      */
     private $resume;
 
     /**
-     * @var string
+     * @var Text
      *
      * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=255)
+     */
+    private $niveau;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", cascade={"persist"})
+     */
+
+    private $user;
+
+    public function __construct()
+    {
+        $this->user = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -82,13 +101,13 @@ class Text
     }
 
     /**
-     * Get titre
+     * Get auteur
      *
      * @return string
      */
-    public function getTitre()
+    public function getAuteur()
     {
-        return $this->titre;
+        return $this->auteur;
     }
 
     /**
@@ -106,13 +125,13 @@ class Text
     }
 
     /**
-     * Get auteur
+     * Get titre
      *
      * @return string
      */
-    public function getAuteur()
+    public function getTitre()
     {
-        return $this->auteur;
+        return $this->titre;
     }
 
     /**
@@ -142,7 +161,7 @@ class Text
     /**
      * Set resume
      *
-     * @param string $resume
+     * @param Text $resume
      *
      * @return Text
      */
@@ -166,7 +185,7 @@ class Text
     /**
      * Set contenu
      *
-     * @param string $contenu
+     * @param Text $contenu
      *
      * @return Text
      */
@@ -185,6 +204,45 @@ class Text
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param string $titre
+     *
+     * @return Text
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    public function addUser(User $user)
+    {
+        $this->user[] = $user;
+        return $this;
+    }
+
+    public function removeUser(User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    public function getUser()
+    {
+        return $this->user;
     }
 }
 

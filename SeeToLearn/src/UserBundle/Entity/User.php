@@ -2,10 +2,8 @@
 
 namespace UserBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use LangueBundle\Entity\NiveauLangue;
 
 /**
  * User
@@ -39,21 +37,34 @@ class User extends BaseUser
     private $prenom;
 
     /**
-     * @ORM\ManyToMany(targetEntity="LangueBundle\Entity\NiveauLangue", cascade={"persist"})
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=255)
      */
 
-    private $niveaulangue;
+    private $niveau;
 
     /**
-     * @ORM\ManyToMany(targetEntity="TextBundle\Entity\Text", cascade={"persist"})
+     * @var string
+     *
+     * @ORM\Column(name="langue", type="string", length=255)
      */
 
-    private $text;
+    private $langue;
 
-    public function __construct()
+    /**
+     * Set id
+     *
+     * @param int $id
+     *
+     * @return User
+     */
+
+    public function setId($id)
     {
-        $this->niveaulangue = new ArrayCollection();
-        $this->text = new ArrayCollection();
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -114,36 +125,52 @@ class User extends BaseUser
         return $this->prenom;
     }
 
-    public function addNiveauLangue(NiveauLangue $niveaulangue)
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     *
+     * @return User
+     */
+    public function setNiveau($niveau)
     {
-        $this->niveaulangue[] = $niveaulangue;
+        $this->niveau = $niveau;
+
         return $this;
     }
 
-    public function removeNiveauLangue(NiveauLangue $niveauLangue)
+    /**
+     * Get niveau
+     *
+     * @return string
+     */
+    public function getNiveau()
     {
-        $this->niveaulangue->removeElement($niveauLangue);
+        return $this->niveau;
     }
 
-    public function getNiveauLangue()
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return User
+     */
+    public function setLangue($langue)
     {
-        return $this->niveaulangue;
-    }
+        $this->langue = $langue;
 
-    public function addText(Text $text)
-    {
-        $this->text[] = $text;
         return $this;
     }
 
-    public function removeText(Text $text)
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
     {
-        $this->text->removeElement($text);
-    }
-
-    public function getText()
-    {
-        return $this->text;
+        return $this->langue;
     }
 }
 

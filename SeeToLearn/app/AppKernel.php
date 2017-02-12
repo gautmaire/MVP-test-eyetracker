@@ -20,8 +20,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new IndexBundle\IndexBundle(),
             new TextBundle\TextBundle(),
-            new LangueBundle\LangueBundle(),
-            new DictionnaireBundle\DictionnaireBundle(),
             new MotBundle\MotBundle(),
         ];
 

@@ -2,7 +2,9 @@
 
 namespace MotBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use TextBundle\Entity\Text;
 
 /**
  * MotDico
@@ -29,26 +31,33 @@ class MotDico
     private $valeur;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="nombre", type="integer")
+     * @ORM\Column(name="langue", type="string", length=255)
      */
-    private $nombre;
+    private $langue;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DictionnaireBundle\Entity\Dictionnaire")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="TextBundle\Entity\Text", cascade={"persist"})
      */
-    private $dictionnaire;
-
-    /**
-    * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", cascade={"persist"})
-    */
-    private $user;
+    private $text;
 
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        $this->text = new ArrayCollection();
+    }
+
+    /**
+     * Set id
+     *
+     * @param int $id
+     *
+     * @return MotDico
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
 
     /**
@@ -71,7 +80,6 @@ class MotDico
     public function setValeur($valeur)
     {
         $this->valeur = $valeur;
-
         return $this;
     }
 
@@ -86,53 +94,42 @@ class MotDico
     }
 
     /**
-     * Set nombre
+     * Set langue
      *
-     * @param integer $nombre
+     * @param string $langue
      *
      * @return MotDico
      */
-    public function setNombre($nombre)
+    public function setLangue($langue)
     {
-        $this->nombre = $nombre;
+        $this->langue = $langue;
         return $this;
     }
 
     /**
-     * Get nombre
+     * Get langue
      *
-     * @return integer
+     * @return string
      */
-    public function getNombre()
+    public function getLangue()
     {
-        return $this->nombre;
+        return $this->langue;
     }
 
-    public function setDictionnaire(Dictionnaire $dictionnaire)
+    public function addText(Text $text)
     {
-        $this->dictionnaire = $dictionnaire;
+        $this->text[] = $text;
         return $this;
     }
 
-    public function getDictionnaire()
+    public function removeText(Text $text)
     {
-        return $this->dictionnaire;
+        $this->text->removeElement($text);
     }
 
-    public function addUser(User $user)
+    public function getText()
     {
-        $this->user[] = $user;
-        return $this;
-    }
-
-    public function removeUser(User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    public function getUser()
-    {
-        return $this->user;
+        return $this->text;
     }
 }
 

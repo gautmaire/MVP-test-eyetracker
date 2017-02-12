@@ -38,25 +38,13 @@
     </header>
 
     <section>
-        <div class="langue row">
-            <p class="col-xs-6">Langue à apprendre :</p>
-            <form method="POST" action="/textes" class="col-xs-6">
-                <select name="langue">
-                    <option> -- </option>
-                    <option>Anglais</option>
-                    <option>Espagnol</option>
-                </select>
-                <button> Valider </button>
-            </form>
-        </div>
-
         <div class="texteConteneur">
             <h2>Propositions de textes</h2>
             <p>Grâce aux données que nous récoltons lors de votre lecture, nous vous proposons les textes les plus adaptés pour votre apprentissage.</p>
             <div id="textes" class="row list-group">
                 {% for text in texts %}
-                    <div class="item  col-xs-4 col-lg-4">
-                        {% if (text.langue == langue) %}
+                    {% if ((text.langue == app.user.langue) and (text.niveau == app.user.niveau)) %}
+                        <div class="item  col-xs-4 col-lg-4">
                             <div class="thumbnail">
                                 <h3> {{ text.titre }} </h3>
                                 <p class="group inner list-group-item-text">{{ text.resume }}</p>
@@ -69,8 +57,8 @@
                                     </div>
                                 </div>
                             </div>
-                        {% endif %}
-                    </div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
 

@@ -3,16 +3,6 @@ mot:
     type:     annotation
     prefix:   /
 
-dictionnaire:
-    resource: "@DictionnaireBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-langue:
-    resource: "@LangueBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 text:
     resource: "@TextBundle/Controller/"
     type:     annotation

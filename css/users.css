@@ -21,6 +21,7 @@
 /** 04 CSS pour la page Textes */
 /** 05 CSS pour la page Une question ? */
 /** 06 CSS pour la page Twitter */
+/** 07 CSS pour la page Mentions légales */
 
 
 /** 00 CSS général **/
@@ -884,7 +885,7 @@ aside > div > p {
 
 .titreQuestion {
 	font-family: 'Quicksand';
-	font-style: bold;
+	font-weight: bold;
 	font-size: 1.6em;
 	text-align: center;
 	margin-top: 10%;
@@ -1013,7 +1014,7 @@ input {
 
 .titreTwitter {
 	font-family: 'Quicksand';
-	font-style: bold;
+	font-weight: bold;
 	font-size: 1.6em;
 	text-align: center;
 	margin-top: 60px;
@@ -1029,6 +1030,25 @@ input {
 
 
 
+/** 07 CSS pour la page Mentions légales */
 
+
+.titreML {
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.6em;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 40px;
+
+}
+
+
+.ctn-ML {
+	width: 70%;
+	margin: 0 auto;
+	font-family: 'ABeeZee';
+	text-align: justify;
+}
 
 

@@ -404,14 +404,6 @@ h2{
   -moz-border-top-right-radius:4px;
   border-top-right-radius: 4px;
 }
-}
-
-section > div {
-  margin-left: 6px;
-}
-
-
-/************ le concept */
 
 .imageRonde {
   overflow:hidden;
@@ -427,24 +419,63 @@ section > div {
   width: 250px;
 }
 
-section > div > p {
+
+
+/************ le concept */
+
+.concept img {
+  display: block;
+  width: 35%;
+  margin: 20px auto;
+}
+
+.concept > div > p {
   margin: 30px 30px;
   text-align: justify;
   font-family: 'ABeeZee';
   font-size: 1em;
 }
 
-.tweet{
-  margin: 10px 0px 0px 10px;
-}
+
 
 
 /************ comment ça marche ? */
 
+.comCaMarche > div {
+  margin-top: 7%;
+}
+
+.comCaMarche > div p {
+  margin: 20px 30px;
+  text-align: justify;
+  font-family: 'ABeeZee';
+  font-size: 1em;
+}
+
+.bLeft {
+  margin-top: 5%;
+  margin-left: 30px;
+  border-left: 2px solid #4A4E4D;
+}
 
 
 /************ L'Eye Tracker, c'est quoi ? */
 
+.eyetracker > div > img {
+  display: block;
+  width: 50%;
+  margin: 100px auto;
+  -ms-transform: rotate(-9deg); /* IE 9 */
+  -webkit-transform: rotate(-9deg); /* Chrome, Safari, Opera */
+  transform: rotate(-9deg);
+}
+
+.eyetracker > div p {
+  margin: 40px 30px;
+  text-align: justify;
+  font-family: 'ABeeZee';
+  font-size: 1em;
+}
 
 /************ Témoignages */
 
@@ -483,7 +514,7 @@ h1 {
   text-align:center;
   margin-bottom:-20px !important;
 }
-p {
+.temoignages p {
   font-family: 'ABeeZee';
   font-style:italic;
 }
@@ -492,6 +523,14 @@ p {
 .carousel-indicators {
   position: absolute;
   top: 160px !important;
+}
+
+
+
+/************ Twitter */
+
+.tweet{
+  margin: 10px 0px 0px 10px;
 }
 
 
@@ -631,9 +670,21 @@ section.equipe > div {
 
 
 
-
 /************ Mentions légales */
 
+.scrollshadow {
+    max-height: 430px;
+    overflow: auto;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.ctn-ML {
+  width: 90%;
+  margin: 0 auto;
+  font-family: 'ABeeZee';
+  text-align: justify;
+}
 
 
 

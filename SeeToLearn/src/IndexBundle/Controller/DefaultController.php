@@ -30,4 +30,12 @@ class DefaultController extends Controller
     {
         return $this->render('IndexBundle:Default:twitter.html.twig');
     }
+
+    /**
+     * @Route("/mentions")
+     */
+    public function mentionsAction()
+    {
+        return $this->render('IndexBundle:Default:mentions.html.twig');
+    }
 }

@@ -26,9 +26,9 @@
                 <ul>
                     <li><a id="us-tab-bord" href="/tableau">Tableau de bord</a></li>
                     <li><a class="activeLink" id="us-textes" href="/textes">Textes</a></li>
-                    <li><a id="us-question" href="#">Une question ?</a></li>
+                    <li><a id="us-question" href="/question">Une question ?</a></li>
                     <li><a id="us-twitter" href="/twitter">Twitter</a></li>
-                    <li><a id="us-mentions-legales" href="#">Mentions légales</a></li>
+                    <li><a id="us-mentions-legales" href="/mentions">Mentions légales</a></li>
                 </ul>
             </nav>
             <p>See To Learn © 2017</p>
@@ -63,37 +63,27 @@
             </div>
 
             <h2>Textes déjà lus</h2>
-
             <div id="textes" class="row list-group">
-                <div class="item  col-xs-4 col-lg-4">
-                    <div class="thumbnail">
-                        <h3>Texte1</h3>
-                        <p class="group inner list-group-item-text">Début du text1 avec trois petit point... blablbla blablabla blabla blablabla ablablablabla blablabla blabla blablabla blblabla blablabla blabla blablabla blablababla blablabla blabla blablabla lbalbalbla blablabla blabla blablabla abla blablabla blabla blablabla balblablababla blablabla blabla blablabla lbalbalbla blablabla blabla blablabla abla blablabla blabla blablabla balblablababla blablabla blabla blablabla lbalbalbla blablabla blabla blablabla abla blablabla blabla blablabla bal</p>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-9">
-                                <p>31% de nouveaux mots</p>
+                {% for text in texts %}
+                    {% for textelu in text.user %}
+                        {% if textelu.id == app.user.id %}
+                            <div class="item  col-xs-4 col-lg-4">
+                                <div class="thumbnail">
+                                    <h3> {{ text.titre }} </h3>
+                                    <p class="group inner list-group-item-text"> {{ text.resume }}</p>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-9">
+                                            <p>Durée de lecture: 00h32min.</p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3">
+                                            <a class="" href="{{ path('lecture', {id: text.id}) }}"><button>See</button></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-md-3">
-                                <a class="" href="lecture.html"><button>See</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item  col-xs-4 col-lg-4">
-                    <div class="thumbnail">
-                        <h3>Texte1</h3>
-                        <p class="group inner list-group-item-text">Début du text1 avec trois petit point... blablbla blablabla blabla blablabla ablablablabla blablabla blabla blablabla blblabla blablabla blabla blablabla blablababla blablabla blabla blablabla lbalbalbla blablabla blabla blablabla abla blablabla blabla blablabla balblablababla blablabla blabla blablabla lbalbalbla blablabla blabla blablabla abla blablabla blabla blablabla balblablababla blablabla blabla blablabla lbalbalbla blablabla blabla blablabla abla blablabla blabla blablabla bal</p>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-9">
-                                <p>31% de nouveaux mots</p>
-                            </div>
-                            <div class="col-xs-12 col-md-3">
-                                <a class="" href="lecture.html"><button>See</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </section>

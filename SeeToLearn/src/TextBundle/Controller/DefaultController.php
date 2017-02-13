@@ -20,4 +20,19 @@ class DefaultController extends Controller
             array('texts' => $repo->findAll(), 'langue' => $langue)
         );
     }
+
+    /**
+     * @Route("/updateTexte/{id}", name="updateTexte")
+     */
+    public function updateTexteAction($id)
+    {
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('TextBundle:Text');
+        $texte = $repo->find($id);
+        $texte->addUser($user);
+        $em->persist($texte);
+        $em->flush();
+        return $this->render('TextBundle:Default:updateTexte.html.twig');
+    }
 }

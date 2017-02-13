@@ -31,13 +31,6 @@ class MotDico
     private $valeur;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="langue", type="string", length=255)
-     */
-    private $langue;
-
-    /**
      * @ORM\ManyToMany(targetEntity="TextBundle\Entity\Text", cascade={"persist"})
      */
     private $text;
@@ -91,29 +84,6 @@ class MotDico
     public function getValeur()
     {
         return $this->valeur;
-    }
-
-    /**
-     * Set langue
-     *
-     * @param string $langue
-     *
-     * @return MotDico
-     */
-    public function setLangue($langue)
-    {
-        $this->langue = $langue;
-        return $this;
-    }
-
-    /**
-     * Get langue
-     *
-     * @return string
-     */
-    public function getLangue()
-    {
-        return $this->langue;
     }
 
     public function addText(Text $text)

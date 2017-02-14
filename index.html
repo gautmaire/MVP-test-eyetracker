@@ -1,47 +1,136 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Démonstration See2Learn</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		<script src="js/jquery.js"></script>
-	</head>
-	<body>
-		<header class="row">
-			<h1><img class="col-xs-2" src="img/logo.png" alt="logo_See2Learn"></h1>
-			<button>Incription</button>
-			<button>Connexion</button>
-		</header>
-
-		<div class="col-xs-12">
-			<aside class="col-xs-2">
-				<nav>
-					<ul>
-						<li><a href="#">Le concept</a></li>
-						<li><a href="#">Comment ça marche ?</a></li>
-						<li><a href="#">L'Eye Tracker</a></li>
-						<li><a href="#">Témoignages</a></li>
-						<li><a href="#">Twitter</a></li>
-						<li><a href="#">L'équipe</a></li>
-						<li><a href="#">Mentions légales</a></li>
-					</ul>
-				</nav>
-			</aside>
-
-			<section class="col-xs-6">
-				<h2>Apprends une nouvelle langue avec la méthode "See To Learn" !</h2>
-				<img class="col-xs-2" src="img/logo.png">
-				<p>Nous avons contacter que, durant ces dernières années, les nouvelles technologies ont grandement évoluer. Cependant, l'enseignement des langues est resté la même.</p>
-				<p>C'est pourquoi on a réfléchis à une nouvelle méthode d'apprendre une langue en utilisant les nouvelles technologies.</p>
-				<p>See To Learn vous propose donc d'apprendre une angue en lisant des textes qui vous sont suggérer selon votre niveau et votre avancement.</p>
-			</section>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>SeeToLearn</title>
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="impress">
+		<div class="step box" data-x="0" data-y="0">
+			<img src="img/logo.png">
+			<h2>Presentation</h2>
+			<p>Jérémy Cuesta-Oger - Stéphane Inthavixay - Gautier Maire - Morgane Richard</p>
+		</div>
+		<div class="step box" data-x="0" data-y="1000">
+			<h2>Summary</h2>
+			<ul>
+				<li>1- The concept</li>
+				<li>2- The Eye Tracker</li>
+				<li>3- The functioning</li>
+				<li>4- Technologies used</li>
+			</ul>
+			<p class="number">2</p>
 		</div>
 
-		<footer>
-			<p>See To Learn ©</p>
-		</footer>
-		<!--script src="js/main.js"></script-->
-	</body>
+		<div class="step box" data-x="0" data-y="2000">
+			<h2>The concept</h2>
+			<div>
+				<p>Simple idea</p>
+				<img src="img/idea.png">
+			</div>
+			<div>
+				<p>Foreign languages</p>
+				<img src="img/langues.png">
+			</div>
+			<div>
+				<p>Eye Tracker</p><br/><br/>
+				<img src="img/eye-tracker.png">
+			</div>
+			<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+			<p class="number">3</p>
+		</div>
+			<!-- <div class="step box" data-x="1500" data-y="2000">
+				<h2>The concept</h2>
+				<p>1- </p>
+				<p>2- </p>
+			</div>
+			<div class="step box" data-x="3000" data-y="2000">
+				<h2>The concept</h2>
+				<p>1- </p>
+				<p>2- </p>
+			</div>
+			<div class="step box" data-x="4500" data-y="2000">
+				<h2>The concept</h2>
+				<p>1- </p>
+				<p>2- </p>
+				<p>1- <a href="../show-presentation/index.html#/step-2">essai lien</a></p>
+			</div> -->
+
+		<div class="step box" data-x="0" data-y="3000">
+			<h2>The Eye Tracker</h2>
+			<p>Eye-tracking</p>
+			<img src="img/oeil.png">
+			<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+			<p class="number">4</p>
+		</div>
+			<div class="step box" data-x="1500" data-y="3000">
+				<h2>The Eye Tracker</h2>
+				<p>A fast history</p>
+				<img src="img/phrise.png">
+				<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+				<p class="number">5</p>
+			</div>
+			<div class="step box" data-x="3000" data-y="3000">
+				<h2>The Eye Tracker</h2>
+				<img src="img/eyetracker.png">
+				<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+				<p class="number">6</p>
+			</div>
+
+		<div class="step box" data-x="0" data-y="4000">
+			<h2>The functioning</h2>
+			<p>Demo</p>
+			<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+			<p class="number">7</p>
+		</div>
+
+		<div class="step box" data-x="0" data-y="5000">
+			<h2>Technologies used</h2>
+			<p>Programming languages </p>
+			<img src="img/HTML5.png">
+			<img src="img/CSS3.png">
+			<img src="img/js.png">
+			<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+			<p class="number">8</p>
+		</div>
+			<div class="step box" data-x="1500" data-y="5000">
+				<h2>Technologies used</h2>
+				<p>Frameworks</p>
+				<img src="img/symfony.png">
+				<img src="img/node.png">
+				<p>GazeJS</p>
+				<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+				<p class="number">9</p>
+			</div>
+			<div class="step box" data-x="3000" data-y="5000">
+				<h2>Technologies used</h2>
+				<p>For the Eye Tracker</p>
+				<img src="img/tobii.png">
+				<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+				<p class="number">10</p>
+			</div>
+
+		<div class="step box" data-x="0" data-y="6000">
+			<h2>Conclusion</h2>
+			<p>And after ?</p>
+			<p>Good points ? Bad points ?</p>
+			<img src="img/plusmoins.png">
+			<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+			<p class="number">11</p>
+		</div>
+
+		<div class="step box" data-x="0" data-y="7000">
+			<h2>Thanks for your attention !</h2>
+			<p>Questions ?</p>
+			<img src="img/questions.png">
+			<a class="sommary" href="../show-presentation/index.html#/step-2"><img src="img/home.svg"></a>
+			<p class="number">12</p>
+		</div>
+	</div>
+	<script src="js/impress.js"></script>
+	<script>
+		impress().init();
+	</script>
+</body>
 </html>

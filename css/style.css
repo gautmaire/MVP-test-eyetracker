@@ -1,4 +1,5 @@
-/** Police **/
+/** Fonts **/
+
 	@font-face {
 		font-family: "Quicksand";
 		font-weight: 300;
@@ -26,15 +27,19 @@
 		src: url('../fonts/abeezee/ABeeZee-Regular.ttf');
 	}
 	@font-face {
-		font-family: "ABeeZee-Italic";
+		font-family: "ABeeZee";
 		font-weight: normal;
 		font-style: italic;
 		src: url('../fonts/abeezee/ABeeZee-Italic.ttf');
 	}
 
+
+
+
 /** CSS mise en page **/
+
    	body{
-		background: #EFEFEF;
+		background: #1C1C1C;
 	}
 
 	.box{
@@ -44,100 +49,339 @@
 	}
 
 	h2{
-		color: #f78972;
-		font-family: "ABeeZee";
+		color: #EFEFEF;
+		font-family: "Quicksand";
+		font-weight: bold;
 	}
 
 	p{
-		color: #1c9ba8;
+		color: #EFEFEF;
 		font-size: 1.1em;
 		font-family: "Quicksand";
 	}
 
-	.color{
-		color: #f58972;
-	}
 
 	.plus{
 		font-size: 1.3em;
 		font-weight: bold;
 	}
 
+	.clear{
+		clear: both;
+	}
+
+
+/* color */
+
+	.rouge{
+		color: #f58972;
+	}
+
+	.bleu{
+		color: #1c9ba8;
+	}
+
+	.grisBack{
+		color: #1C1C1C;
+	}
+
+
+
+
+
+
 /** step-1 **/
+
 	#step-1{
-		display: block;
+		margin-top: 70px;
 		padding: 30px 50px;
-		/*text-shadow: 0 2px 2px rgba(0, 0, 0, 1);*/
 		display: inline;
 		text-align: center;
 		color: #4a4e4d;
-	}
-	#step-1 p{
-		opacity: 0;
-	}
-	#step-1.active p{
-		animation-duration: 1s;
-		animation-name: apparaitre;
-		animation-delay: 0.5s;
-		animation-fill-mode: forwards;
+
+
+		animation: opacityOneIt 3s linear;
 	}
 
-	@keyframes apparaitre {
+	@keyframes opacityOneIt {
 	  from {
-	    opacity: 0;
+	  	opacity: 0;
 	  }
 
 	  to {
-	    opacity: 1;
+	   opacity: 1;
 	  }
 	}
 
+
+	.logo{
+		height: 240px;
+		width: 500px;
+		margin: 0 auto;
+
+		animation: zoomOneIt 3s ease;
+	}
+
+	@keyframes zoomOneIt {
+	  from {
+	  	height: 80px;
+	  	width: 170px;
+	  }
+
+	  to {
+	    height: 240px;
+	    width: 500px;
+	  }
+	}
+
+	.logo > img{
+		width: 100%;
+
+    	animation: zoomAuto 3s ease 2.5s infinite;
+
+	}
+
+	@keyframes zoomAuto {
+	  from {
+	  	width: 100%;
+	    margin-top: 0%;
+	  }
+
+	  50% {
+	  	width: 70%;
+	  	margin-top: 7.5%;
+	  }
+
+	  to {
+	    width: 100%;
+	    margin-top: 0%;
+	  }
+	}
+
+
+	
+
+
 /** step-2 **/
+
 	#step-2{
+		transition: all 1.5s ease;
+	}
+
+	#step-2 p:first-child {
+		text-align: center;
+		font-family: 'Quicksand';
+		font-weight: bold;
+		height: 50px;
+	}
+	
+	#step-2 > .firstDiv img{
+		width: 200px;
+		border: 4px solid white;
+		border-radius: 50%;
 		position: relative;
+		left: 0px;
+		top: 0px;
+
+		animation: opacityAuto 3s ease-out infinite;
 	}
+
+	@keyframes opacityAuto {
+	  from {
+	  	opacity: 1;
+	  	transform: rotateZ(360deg);
+	  }
+
+	  20% {
+	  	opacity: 1;
+	  }
+
+	  50% {
+	  	opacity: 0.1;
+	  }
+
+	  80% {
+	  	opacity: 1;
+	  }
+
+	  to {
+	   opacity: 1;
+	  }
+	}
+
 	#step-2 h2{
-		font-size: 2.5em;
-	}
-	#step-2 img{
+		font-family: "Quicksand";
+		font-weight: bold;
+		font-size: 2.6em;
+		color: #1C1C1C;
+
 		position: absolute;
-		top: 0;
-		right: 0;
+		top: -45px;
+		left: 20px;
 	}
-	#step-2 > p:nth-child(3){
-		position: absolute;
-    	top: -10px;
-    	right: 67px;
-    	text-align: center;
-    	display: inline-block;
-    	width: 100px;
-    	color: white;
+
+	#step-2 > .firstDiv > *{
+		float: left;
 	}
-	#step-2 > p:nth-child(4){
-		padding-top: 0;
-   		margin-top: 0;
-    	width: 100%;
-    	display: inline-block;
+
+	#step-2 > .firstDiv > p{
+		width: 550px;
+		margin-left: 40px;
+		margin-top: 40px;
+		font-family: 'Quicksand';
+		font-size: 0.8em;
 	}
-	#step-2 > p:nth-child(5){
-		font-size: 0.9em;
+
+	#step-2 > .firstDiv {
+		height: 300px;
+
+		transform: translateX(1500px);
+		opacity: 0;
+		transition: all 1.5s ease 1.5s;
+	}
+
+	#step-2.active > .firstDiv {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+
+	#step-2 p:last-child {
+		text-align: center;
+		font-family: 'Quicksand';
 		font-style: italic;
+		display: block;
+		font-size: 0.8em;
+
+		transform: translateX(1500px);
+		opacity: 0;
+		transition: all 1.5s ease 4s;
 	}
+
+	#step-2.active p:last-child {
+		transform: translateX(0px);
+		opacity: 1;
+	}
+
+	#step-2 > div.floatElevateImg {
+		width: 80px;
+		position: absolute;
+		left: 2250px;
+		top: 400px;
+
+		opacity: 0;
+		transition: all 1.5s ease 4s;
+
+		animation: floatElevate 1.5s ease infinite;
+	}
+
+	#step-2.active > div.floatElevateImg {
+		left: 750px;
+		opacity: 1;
+	}
+
+	#step-2 > .floatElevateImg > img {
+		width: 80px;
+		transform: rotateY(180deg);
+	}
+
+
+
+
+
 
 /** step-3 **/
-	#step-3 img{
-		float: right;
+
+	/* transition step 2 to 3 */
+	#step-2.past {
+		opacity: 0;
 	}
 
+	#step-3 {
+		margin-top: 50px;
+		text-align: center;
+		opacity: 0;
+		transition: all 1s ease;
+	}
+
+	#step-3.active {
+		opacity: 1;
+	}
+
+	#step-3 > p {
+		transform: translateY(1000px);
+		transition: all 1.5s ease 1s;
+	}
+
+	#step-3.active > p {
+		transform: translateY(0px);
+	}
+
+
+
+	
+
+
+
+
 /** step-4 **/
+
+	/* transition step 3 to 4 */
+	#step-3.past {
+		opacity: 0;
+	}
+
+	#step-4 {
+		text-align: center;
+		opacity: 0;
+		transition: all 1s ease;
+	}
+
+	#step-4.active {
+		opacity: 1;
+	}
+
 	#step-4{
 		text-align: center;
 	}
-	#step-4 h2{
-		font-size: 2em;
+
+	#step-4 > img{
+		width: 200px;
 	}
 
+	#step-4 > p:last-child{
+		opacity: 0;
+		transform: translateY(1000px);
+		transition: all 1.5s ease 2s;
+	}
+
+	#step-4.active > p:last-child {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+
+
+
+
+
 /** step-5 **/
+
+	/* transition step 3 to 4 */
+	#step-4.past {
+		opacity: 0;
+	}
+
+	#step-5 {
+		text-align: center;
+		opacity: 0;
+		transition: all 2s ease;
+	}
+
+	#step-5.active {
+		opacity: 1;
+	}
+
+
+
 	#step-5{
 		line-height: 4em;
 		width: 850px;
@@ -157,6 +401,9 @@
 	#step-5 > h2:nth-child(5){
 		font-size: 1.4em;
 	}
+
+
+
 
 /** step-6 **/
 	#step-6 p{
@@ -207,8 +454,8 @@
 		font-weight: bolder;
 	}
 
-/** rotate **/
-	.active .rotate{/** rotation vers le haut à droite **/
+/** rotate **//*
+	.active .rotate{
 		display: inline-block;
 		animation-duration: 0.5s;
 		animation-name: rotate;
@@ -223,10 +470,10 @@
 		to{
 			transform: rotate(-5deg);
 		}
-	}
+	}*/
 
-/** rotate_1 **/
-	.active .rotate_1{/** rotation vers le haut à gauche **/
+/* rotate_1 *//*
+	.active .rotate_1{
 		display: inline-block;
 		animation-duration: 0.5s;
 		animation-name: rotate1;
@@ -241,4 +488,28 @@
 		to{
 			transform: rotate(5deg);
 		}
+	}*/
+
+
+	.floatElevate {
+		display: inline-block;
+		animation: floatElevate 1.5s ease infinite;
 	}
+
+	@keyframes floatElevate{
+		from{
+			transform: translateY(0px);
+		}
+
+		50% {
+			transform: translateY(-5px);
+		}
+
+		to{
+			transform: translateY(0px);
+		}
+	}
+
+
+
+

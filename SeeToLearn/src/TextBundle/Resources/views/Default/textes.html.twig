@@ -44,20 +44,28 @@
             <div id="textes" class="row list-group">
                 {% for text in texts %}
                     {% if ((text.langue == app.user.langue) and (text.niveau == app.user.niveau)) %}
-                        <div class="item  col-xs-4 col-lg-4">
-                            <div class="thumbnail">
-                                <h3> {{ text.titre }} </h3>
-                                <p class="group inner list-group-item-text">{{ text.resume }}</p>
-                                <div class="row">
-                                    <div class="col-xs-12 col-md-9">
-                                        <p>31% de nouveaux mots</p>
-                                    </div>
-                                    <div class="col-xs-12 col-md-3">
-                                        <a class="" href="{{ path('lecture', {id: text.id}) }}"><button>See</button></a>
+                        {% set lu = "N" %}
+                        {% for user in text.user %}
+                            {% if user.id == app.user.id %}
+                                {% set lu = "O" %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if (lu == "N") %}
+                            <div class="item  col-xs-4 col-lg-4">
+                                <div class="thumbnail">
+                                    <h3> {{ text.titre }} </h3>
+                                    <p class="group inner list-group-item-text">{{ text.resume }}</p>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-9">
+                                            <p>31% de nouveaux mots</p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3">
+                                            <a class="" href="{{ path('lecture', {id: text.id}) }}"><button>See</button></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             </div>

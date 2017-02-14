@@ -66,6 +66,21 @@ class Text
     private $niveau;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="nombrelu", type="integer", options={"default" : 0})
+     */
+    private $nombrelu;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="note", type="integer", options={"default" : 0})
+     */
+    private $note;
+
+
+    /**
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", cascade={"persist"})
      */
 
@@ -227,6 +242,54 @@ class Text
     public function getNiveau()
     {
         return $this->niveau;
+    }
+
+    /**
+     * Set nombrelu
+     *
+     * @param int $nombrelu
+     *
+     * @return Text
+     */
+    public function setNombrelu($nombrelu)
+    {
+        $this->nombrelu = $nombrelu;
+
+        return $this;
+    }
+
+    /**
+     * Get nombrelu
+     *
+     * @return Text
+     */
+    public function getNombrelu()
+    {
+        return $this->nombrelu;
+    }
+
+    /**
+     * Set note
+     *
+     * @param int $note
+     *
+     * @return Text
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return Text
+     */
+    public function getNote()
+    {
+        return $this->note;
     }
 
     public function addUser(User $user)

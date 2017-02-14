@@ -69,15 +69,23 @@
         <p class="">Avez-vous trouver ce texte difficile ?</p>
         <p class="">(1 si vous avez tout compris, 4 si vous avez rien compris)</p>
     </div>
-    <form method="POST" action="/updateTexte" class="evaluation col-xs-4 col-md-6 col-lg-7">
-        <select>
-            <option>-</option>
+    <form method="POST" action="{{ path('updateTexte', {id: texte.id}) }}" class="evaluation col-xs-4 col-md-6 col-lg-7">
+        <select name="note">
             <option>1</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
         </select>
+        {% set lu = "N" %}
+        {% for user in texte.user %}
+            {% if user.id == app.user.id %}
+                <a href="/textes"> <button> Terminer </button></a>
+                {% set lu = "O" %}
+            {% endif %}
+        {% endfor %}
+        {% if lu == "N" %}
+            <button>Terminer</button>
+        {% endif %}
     </form>
-    <a class="" href="{{ path('updateTexte', {id: texte.id}) }}"><button>Terminer</button></a>
 </section>
 {% endblock %}

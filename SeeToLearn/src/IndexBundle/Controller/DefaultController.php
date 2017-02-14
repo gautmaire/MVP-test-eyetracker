@@ -20,7 +20,13 @@ class DefaultController extends Controller
      */
     public function tableauAction()
     {
-        return $this->render('IndexBundle:Default:tableau.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('TextBundle:Text');
+        $repo1 = $em->getRepository('MotBundle:MotDico');
+        $repo2 = $em->getRepository('UserBundle:User');
+        return $this->render('IndexBundle:Default:tableau.html.twig',
+            array('textes' => $repo->findAll(), 'mots' => $repo1->findAll(), 'users' => $repo2->findAll())
+        );
     }
 
     /**
@@ -37,5 +43,21 @@ class DefaultController extends Controller
     public function mentionsAction()
     {
         return $this->render('IndexBundle:Default:mentions.html.twig');
+    }
+
+    /**
+     * @Route("/question")
+     */
+    public function questionAction()
+    {
+        return $this->render('IndexBundle:Default:question.html.twig');
+    }
+
+    /**
+     * @Route("/sendMail", name="sendMail")
+     */
+    public function sendMailAction(Request $request)
+    {
+        return $this->render('IndexBundle:Default:question.html.twig');
     }
 }

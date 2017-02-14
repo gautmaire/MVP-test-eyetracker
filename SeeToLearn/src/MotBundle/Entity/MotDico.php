@@ -31,14 +31,11 @@ class MotDico
     private $valeur;
 
     /**
-     * @ORM\ManyToMany(targetEntity="TextBundle\Entity\Text", cascade={"persist"})
+     * @var string
+     *
+     * @ORM\Column(name="langue", type="string", length=255)
      */
-    private $text;
-
-    public function __construct()
-    {
-        $this->text = new ArrayCollection();
-    }
+    private $langue;
 
     /**
      * Set id
@@ -86,20 +83,28 @@ class MotDico
         return $this->valeur;
     }
 
-    public function addText(Text $text)
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     *
+     * @return MotDico
+     */
+    public function setLangue($langue)
     {
-        $this->text[] = $text;
+        $this->langue = $langue;
         return $this;
     }
 
-    public function removeText(Text $text)
+    /**
+     * Get langue
+     *
+     * @return string
+     */
+    public function getLangue()
     {
-        $this->text->removeElement($text);
+        return $this->langue;
     }
 
-    public function getText()
-    {
-        return $this->text;
-    }
 }
 

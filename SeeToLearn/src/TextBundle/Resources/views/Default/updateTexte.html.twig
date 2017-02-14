@@ -1,1 +1,43 @@
-<a href="/textes"> <button> Revenir à la page des textes. </button></a>
+{% extends 'IndexBundle:Default:headerfooter.html.twig' %}
+
+{% block title %}
+    <title> Enregistrement de texte </title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('bundles/css/users.css') }}">
+{% endblock %}
+
+{% block content %}
+    <header>
+        <button class="buttonBurger">
+            <span class="buttonBurger__top"></span>
+            <span class="buttonBurger__middle"></span>
+            <span class="buttonBurger__bottom"></span>
+        </button>
+        <div class="menu">
+            <div>
+                <img src="{{ asset('bundles/img/img-profil.jpg') }}" alt="image profil">
+            </div>
+            {% if app.user %}
+                <h3>{{ app.user.prenom }} {{ app.user.nom }}</h3>
+            {% endif %}
+            <nav>
+                <ul>
+                    <li><a id="us-tab-bord" href="/tableau">Tableau de bord</a></li>
+                    <li><a class="activeLink" id="us-textes" href="/textes">Textes</a></li>
+                    <li><a id="us-question" href="/question">Une question ?</a></li>
+                    <li><a id="us-twitter" href="/twitter">Twitter</a></li>
+                    <li><a id="us-mentions-legales" href="/mentions">Mentions légales</a></li>
+                </ul>
+            </nav>
+            <p>See To Learn © 2017</p>
+        </div>
+        <img src="{{ asset('bundles/img/logo.png') }}" alt="logo_See2Learn" />
+        <a href="/logout"><button class="signOut">Déconnexion</button></a>
+    </header>
+    <section>
+        <p> Le texte a bien été enregistré. </p>
+        <a href="/textes"> <button> Revenir à la page des textes. </button></a>
+    </section>
+{% endblock %}

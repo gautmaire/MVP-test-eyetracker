@@ -85,21 +85,26 @@
                     <div class="block">
                         <div>
                             <div class="number-grey">
-                                <span class="num">16</span>
+                                <span class="num"> {{ app.user.nombretextelu }}</span>
                             </div>
                             <p>Textes lus</p>
                         </div>
                         <div>
                             <div class="number-blue">
-                                <span class="num">1 600</span>
+                                <span class="num"> {{ app.user.nombremotlu }}</span>
                             </div>
                             <p>Mots lus</p>
                         </div>
                         <div>
-                            <div class="number-yellow"><span class="num">45%</span></div><p>Des mots en anglais</p>
+                            <div class="number-yellow"><span class="num"> {{ (app.user.nombremotlu / mots|length * 100)|round }}%</span></div><p>Des mots en anglais</p>
                         </div>
                         <div>
-                            <div class="number-grey"><span class="num">55%</span></div><p>Moyennes utilisateurs</p>
+                            {% set moyenne = 0 %}
+                            {% set total = users|length %}
+                            {% for user in users %}
+                                {% set moyenne = moyenne + (user.nombremotlu / mots|length * 100)|round %}
+                            {% endfor %}
+                            <div class="number-grey"><span class="num"> {{ moyenne / total }}%</span></div><p>Moyenne utilisateurs</p>
                         </div>
                         <div>
                             <div class="number-blue"><span class="num">4H</span></div><p>Temps de lecture</p>

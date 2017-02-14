@@ -53,6 +53,22 @@ class User extends BaseUser
     private $langue;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="nombremotlu", type="integer")
+     */
+
+    private $nombremotlu = 0;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nombretextelu", type="integer")
+     */
+
+    private $nombretextelu = 0;
+
+    /**
      * Set id
      *
      * @param int $id
@@ -171,6 +187,54 @@ class User extends BaseUser
     public function getLangue()
     {
         return $this->langue;
+    }
+
+    /**
+     * Set nombremotlu
+     *
+     * @param int $nombremotlu
+     *
+     * @return User
+     */
+    public function setNombremotlu($nombremotlu)
+    {
+        $this->nombremotlu = $nombremotlu;
+
+        return $this;
+    }
+
+    /**
+     * Get nombremotlu
+     *
+     * @return int
+     */
+    public function getNombremotlu()
+    {
+        return $this->nombremotlu;
+    }
+
+    /**
+     * Set nombretextelu
+     *
+     * @param int $nombremotlu
+     *
+     * @return User
+     */
+    public function setNombretextelu($nombretextelu)
+    {
+        $this->nombretextelu = $nombretextelu;
+
+        return $this;
+    }
+
+    /**
+     * Get nombretextelu
+     *
+     * @return int
+     */
+    public function getNombretextelu()
+    {
+        return $this->nombretextelu;
     }
 }
 

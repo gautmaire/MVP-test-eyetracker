@@ -69,6 +69,14 @@ class User extends BaseUser
     private $nombretextelu = 0;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="dureelecture", type="integer")
+     */
+
+    private $dureelecture = 0;
+
+    /**
      * Set id
      *
      * @param int $id
@@ -235,6 +243,30 @@ class User extends BaseUser
     public function getNombretextelu()
     {
         return $this->nombretextelu;
+    }
+
+    /**
+     * Set dureelecture
+     *
+     * @param int $dureelecture
+     *
+     * @return User
+     */
+    public function setDureelecture($dureelecture)
+    {
+        $this->dureelecture = $dureelecture;
+
+        return $this;
+    }
+
+    /**
+     * Get dureelecture
+     *
+     * @return int
+     */
+    public function getDureelecture()
+    {
+        return $this->dureelecture;
     }
 }
 

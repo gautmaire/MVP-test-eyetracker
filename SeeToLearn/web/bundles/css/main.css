@@ -1,0 +1,888 @@
+/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+    height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+/* **************************************
+            Page d'Accueil
+************************************** */
+
+
+/* ****** ------> Fonts */
+
+@font-face {
+  font-family: "Quicksand";
+  font-weight: 300;
+  src: url('../fonts/quicksand/Quicksand-Light.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: normal;
+  src: url('../fonts/quicksand/Quicksand-Regular.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: 500;
+  src: url('../fonts/quicksand/Quicksand-Medium.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: bold;
+  src: url('../fonts/quicksand/Quicksand-Bold.ttf');
+}
+
+
+@font-face {
+  font-family: "ABeeZee";
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/abeezee/ABeeZee-Regular.ttf');
+}
+
+@font-face {
+  font-family: "ABeeZee";
+  font-weight: normal;
+  font-style: italic;
+  src: url('../fonts/abeezee/ABeeZee-Italic.ttf');
+}
+
+
+
+
+/* ****** ------> Générale */
+
+body {
+  height: 100%;
+  background: #0E9AA7;
+}
+
+li{
+  list-style-type: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+
+
+/* ****** ------> Header */
+
+header{
+  height: 200px;
+  padding-top: 25px;
+  background: #efefef;
+}
+
+header img{
+  width: 140px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.signIn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+
+.signUp {
+  position: fixed;
+  right: 20px;
+  top: 60px;
+}
+
+.signIn, .signUp {
+  font-family: 'Quicksand';
+  font-weight: 500;
+  width: 120px;
+  color: #F6CD61;
+  border: 3px solid #F6CD61;
+  background: none;
+  font-size: 1.2em;
+
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+
+  box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+}
+
+.signIn:hover, .signUp:hover, .signIn:focus, .signUp:focus, .signIn:active, .signUp:active {
+  color: white;
+  background: #F6CD61;
+}
+
+
+/* ****** ------> Conteneur */
+
+body > div {
+  display: inline-block;
+  min-width: 804px;
+
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+div > aside, div > section{  
+  background: white; 
+  vertical-align: text-top;
+
+  display: inline-block;
+
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+}
+
+
+
+/* ****** ------> Nav */
+
+aside {
+  width: 200px;
+  padding: 40px 0;
+  position: relative;
+  z-index: 3;
+}
+
+aside ul{
+  padding: 0;
+  margin: 0;
+  width: 200px;
+}
+
+aside li {
+  display: inline;
+}
+
+aside a{
+  color: #4A4E4D;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 1em;
+
+  display: inline-block;
+  width: 200px;
+  padding: 20px 0 20px 15px;
+
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+aside a:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #4A4E4D;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+aside a:hover, aside a:focus, aside a:active{
+  color: white;
+}
+
+.activeLink{
+  color: white;
+  background: #4A4E4D;
+
+}
+
+aside a:hover:before, aside a:focus:before, aside a:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+
+/* ****** ------> Cacher les sections */
+
+.cache {
+  width: 640px;
+  height: 540px;
+  position: absolute;
+  top: -20px;
+  left: -140px;
+  z-index: 2;
+  transition: all 1s ease;
+}
+
+.cacheGris{
+  width: 100%;
+  height: 71px;
+  background-color: #efefef;
+}
+
+.cacheBleu{
+  width: 100%;
+  height: 469px;
+  background-color: #0E9AA7;
+}
+
+
+/* ****** ------> transition menu */
+
+div > aside{
+  transform: translateX(300px);
+  transition: all 1s ease;
+}
+
+div > section{
+  transform: translateX(-310px);
+  transition: all 1s ease;
+}
+
+.activeCache{
+  transform: translateX(-300px);
+}
+
+.activeItem{
+  transform: translateX(0px);
+}
+
+.activeSection{
+  transform: translateX(15px);
+}
+
+.desactiveSection{
+  transform: translateX(-610px);
+}
+
+
+/* ****** ------> Sections contenus menu */
+
+section {
+  width: 610px;
+  height: 500px;
+  margin-left: -10px;
+  margin-top: 1.5px;
+  position: absolute;
+  z-index: 1;
+}
+
+h2{
+  background-color: #4A4E4D;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 1.6em;
+  margin: 0;
+  padding: 20px 40px 20px 45px;
+  text-align: center;
+  
+  -webkit-border-top-left-radius:4px;
+  -moz-border-top-left-radius:4px;
+  border-top-left-radius: 4px;
+  -webkit-border-top-right-radius:4px;
+  -moz-border-top-right-radius:4px;
+  border-top-right-radius: 4px;
+}
+
+.imageRonde {
+  overflow:hidden;
+  -webkit-border-radius:70px;
+  -moz-border-radius:70px;
+  border-radius:70px;
+  width:140px;
+  height:140px;
+  margin: 20px auto;
+}
+
+.imageRonde  img{
+  width: 250px;
+}
+
+
+
+/************ le concept */
+
+.concept img {
+  display: block;
+  width: 35%;
+  margin: 20px auto;
+}
+
+.concept > div > p {
+  margin: 30px 30px;
+  text-align: justify;
+  font-family: 'ABeeZee';
+  font-size: 1em;
+}
+
+
+
+
+/************ comment ça marche ? */
+
+.comCaMarche > div {
+  margin-top: 7%;
+}
+
+.comCaMarche > div p {
+  margin: 20px 30px;
+  text-align: justify;
+  font-family: 'ABeeZee';
+  font-size: 1em;
+}
+
+.bLeft {
+  margin-top: 5%;
+  margin-left: 30px;
+  border-left: 2px solid #4A4E4D;
+}
+
+
+/************ L'Eye Tracker, c'est quoi ? */
+
+.eyetracker > div > img {
+  display: block;
+  width: 50%;
+  margin: 100px auto;
+  -ms-transform: rotate(-9deg); /* IE 9 */
+  -webkit-transform: rotate(-9deg); /* Chrome, Safari, Opera */
+  transform: rotate(-9deg);
+}
+
+.eyetracker > div p {
+  margin: 40px 30px;
+  text-align: justify;
+  font-family: 'ABeeZee';
+  font-size: 1em;
+}
+
+/************ Témoignages */
+
+.temoignages .container {
+  width: 600px;
+  padding-top: 80px;
+}
+
+
+/* carousel */
+#quote-carousel {
+  padding: 0 10px 30px 10px;
+  margin-top: 30px;
+  text-align:center;
+}
+/* indicator position */
+#quote-carousel .carousel-indicators {
+  right: 50%;
+  top: auto;
+  bottom: -10px;
+  margin-right: -19px;
+}
+/* indicator color */
+#quote-carousel .carousel-indicators li {
+  background: #c0c0c0;
+}
+/* active indicator */
+#quote-carousel .carousel-indicators .active {
+  background: #333333;
+  height:10px;
+  width:10px;
+  margin-bottom:1px;
+}
+/* typography */
+h1 {
+  text-align:center;
+  margin-bottom:-20px !important;
+}
+.temoignages p {
+  font-family: 'ABeeZee';
+  font-style:italic;
+}
+
+
+.carousel-indicators {
+  position: absolute;
+  top: 160px !important;
+}
+
+
+
+/************ Twitter */
+
+.tweet{
+  margin: 10px 0px 0px 10px;
+}
+
+
+/************ L'équipe */
+
+section.equipe > div {
+  margin-left: 0px;
+  margin-top: 200px;
+}
+
+
+.slider--teams {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  max-width: 610px;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.slider--teams .slider--teams__team {
+  position: relative;
+  overflow: hidden;
+}
+
+#list {
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+#list li {
+  position: relative;
+  display: inline-block;
+  float: left;
+  text-align: center;
+}
+#list li figure {
+  cursor: pointer;
+  margin: 1em;
+  opacity: 0.5;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: opacity 450ms ease-in-out, -webkit-transform 450ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: opacity 450ms ease-in-out, -webkit-transform 450ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: transform 450ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 450ms ease-in-out;
+  transition: transform 450ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 450ms ease-in-out, -webkit-transform 450ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -webkit-transform: scale(0.5) translateZ(0px);
+          transform: scale(0.5) translateZ(0px);
+}
+#list li figure:hover {
+  opacity: 0.8;
+  -webkit-transform: scale(0.6) translateZ(0px);
+          transform: scale(0.6) translateZ(0px);
+}
+#list li figure:active {
+  opacity: 1;
+  -webkit-transform: scale(0.7) translateZ(0px);
+          transform: scale(0.7) translateZ(0px);
+}
+#list li figure > div {
+  border-radius: 5px;
+  position: relative;
+  margin: 2rem auto;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  -webkit-transform: rotate(45deg) translateZ(0px);
+          transform: rotate(45deg) translateZ(0px);
+}
+#list li figure > div > div {
+  background: url(../img/team-members.png) no-repeat;
+  background-size: cover;
+  background-position: 0px 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  -webkit-transform: rotate(-45deg) translate(0%, -70%);
+          transform: rotate(-45deg) translate(0%, -70%);
+}
+#list li figure figcaption h2 {
+  color: #4A4E4D;
+  font-family: 'abeezee';
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: white;
+  border-bottom: 2px dotted #4A4E4D;
+  padding: 0;
+}
+#list li figure figcaption p {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+#list li:nth-child(1) figure > div > div {
+  background-position: 0px 0px !important;
+}
+#list li:nth-child(2) figure > div > div {
+  background-position: 0px 20% !important;
+}
+#list li:nth-child(3) figure > div > div {
+  background-position: 0px 40% !important;
+}
+#list li:nth-child(4) figure > div > div {
+  background-position: 0px 60% !important;
+}
+#list li:nth-child(5) figure > div > div {
+  background-position: 0px 80% !important;
+}
+#list li:nth-child(6) figure > div > div {
+  background-position: 0px 100% !important;
+}
+
+.active {
+  opacity: 1 !important;
+  -webkit-transform: scale(1) translateZ(0px) !important;
+          transform: scale(1) translateZ(0px) !important;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.cf {
+  *zoom: 1;
+}
+
+
+
+/************ Mentions légales */
+
+.scrollshadow {
+    max-height: 430px;
+    overflow: auto;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.ctn-ML {
+  width: 90%;
+  margin: 0 auto;
+  font-family: 'ABeeZee';
+  text-align: justify;
+}
+
+
+
+/* ********** ------> Footer */
+
+footer{
+  padding-top: 480px;
+  text-align: center;
+  color: white;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+
+
+
+
+/* **************************************
+            Page tableau de bord
+************************************** */
+
+
+/* **************************************
+            Page de lecture
+************************************** */
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

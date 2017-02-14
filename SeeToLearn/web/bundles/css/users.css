@@ -1,0 +1,1058 @@
+/**********************************************
+	CODE CSS
+**********************************************/
+/*Navigation CSS*/
+/** 00 CSS général **/
+/** 01 Fonts **/
+/** 02 CSS pour la page LECTURE **/
+  /* 02-1 Code général */
+  /* 02-2 Header */
+  	/* 02-2.1 menu-responsive-hamburger */
+  	/* 02-2.2 menu-responsive-cross */
+  	/* 02-2.3 nav */
+  	/* 02-2.4 menu ouvert */
+  /* 02-3 Section */
+  /* 02-4 Aside */
+  /* 02-5 Button */
+  /* 02-6 Footer */
+/** 03 CSS pour la page TABLEAU de bord */
+  /* 03-1 Code général */
+  /* 03-2 CSS des différentes DIV */
+/** 04 CSS pour la page Textes */
+/** 05 CSS pour la page Une question ? */
+/** 06 CSS pour la page Twitter */
+/** 07 CSS pour la page Mentions légales */
+
+
+/** 00 CSS général **/
+
+li{
+  list-style-type: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/** 01 Fonts **/
+
+@font-face {
+  font-family: "Quicksand";
+  font-weight: 300;
+  src: url('../fonts/quicksand/Quicksand-Light.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: normal;
+  src: url('../fonts/quicksand/Quicksand-Regular.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: 500;
+  src: url('../fonts/quicksand/Quicksand-Medium.ttf');
+}
+@font-face {
+  font-family: "Quicksand";
+  font-weight: bold;
+  src: url('../fonts/quicksand/Quicksand-Bold.ttf');
+}
+
+
+@font-face {
+  font-family: "ABeeZee";
+  font-weight: normal;
+  font-style: normal;
+  src: url('../fonts/abeezee/ABeeZee-Regular.ttf');
+}
+
+@font-face {
+  font-family: "ABeeZee";
+  font-weight: normal;
+  font-style: italic;
+  src: url('../fonts/abeezee/ABeeZee-Italic.ttf');
+}
+
+/** 02 CSS pour la page LECTURE **/
+/* 02-1 Code général */
+body{
+	background : #efefef;
+}
+
+/* 02-2 Header */
+header{
+	padding: 20px 0px;
+
+}
+
+header > img{
+  	width: 140px;
+  	margin-left: 12.5%;
+}
+
+.signOut {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: 'Quicksand';
+  font-weight: bold;
+  width: 120px;
+  color: #F6CD61;
+  border: 3px solid #F6CD61;
+  background: none;
+  font-size: 1.2em;
+
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+
+	box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+}
+
+.signOut:hover, .signOut:active, .signOut:focus {
+  color: white;
+  background: #F6CD61;
+  outline: none;
+}
+
+
+/* 02-2.1 menu-hamburger */
+
+/* les barres du menu */
+.buttonBurger{
+  z-index: 2;
+  position: fixed;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  height: 30px;
+  width: 40px;
+  padding:0;
+  top: 38.5px;
+  left: 25px;
+
+  transition: all 1s ease;
+}
+
+.activeButBurger {
+	transform: translateX(120px);
+}
+
+.buttonBurger__top, .buttonBurger__middle, .buttonBurger__bottom{
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left:0;
+  background: #333;
+  transition: all .4s ease;
+}
+.buttonBurger__top{
+  top: 0%;
+}
+.buttonBurger__top--active{
+  top: 50%;
+  margin-top:-2px;
+  transform: rotate(405deg);
+}
+.buttonBurger__middle{
+  top: 50%;
+  margin-top:-2px;
+}
+.buttonBurger__middle--active{
+  transform: rotate(405deg);
+}
+.buttonBurger__bottom{
+  top: 100%;
+  margin-top:-4px;
+}
+.buttonBurger__bottom--active{
+  top: 50%;
+  margin-top:-2px;
+  transform: rotate(675deg);
+}
+.buttonBurger:hover .buttonBurger__top{
+  top: 50%;
+  margin-top:-2px;
+}
+.buttonBurger:hover .buttonBurger__bottom{
+  top: 50%;
+  margin-top:-2px;
+}
+
+/* contenu du menu */
+
+.menu {
+	z-index: 1;
+	position: fixed;
+	top: 0px;
+	left: -200px; /* -200px + transition à l'appel */
+	width: 200px;
+	height: 100%;
+	background-color: #0E9AA7;
+	padding-top: 30px;
+	padding-top: 100px;
+
+	transition: all 1s ease;
+}
+
+.menu > div {
+	width: 120px;
+	height: 120px;
+	margin: 0 auto;
+	border: 4px solid white;
+	overflow: hidden;
+	border-radius: 50%;
+	position: relative;
+}
+
+.menu > div > img {
+	width: 150px;
+	position: absolute;
+	top: -20px;
+	left: -30px;
+}
+
+.menu > h3 {
+	width: 70%;
+	margin: 10px auto;
+
+	text-align: center;
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.6em;
+}
+
+/* transition */
+
+.activeMenuUsers{
+  transform: translateX(200px);
+}
+
+
+
+/* nav */
+
+.menu > nav {
+	margin-top: 40px;
+}
+
+.menu > nav ul{
+  padding: 0;
+  margin: 0;
+  width: 200px;
+}
+
+.menu > nav li {
+  display: inline;
+}
+
+.menu > nav a{
+  color: #4A4E4D;
+  font-family: 'Quicksand';
+  font-weight: 500;
+  font-size: 1em;
+
+  display: inline-block;
+  width: 200px;
+  padding: 20px 0 20px 15px;
+
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.menu > nav a:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #4A4E4D;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.menu > nav a:hover, .menu > nav a:focus, .menu > nav a:active{
+  color: white;
+}
+
+.activeLink{
+  color: white !important;
+  background: #4A4E4D;
+
+}
+
+.menu > nav a:hover:before, .menu > nav a:focus:before, .menu > nav a:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.menu p{
+	position: absolute;
+	bottom: 20px;
+	left: 30px;
+	font-family: 'ABeeZee';
+	font-style: italic;
+	text-align: center;
+	color: #4A4E4D;
+}
+
+
+
+/* 02-3 Section */
+
+.lecture {
+	width: 75%;
+	height: auto;
+	margin: 0 auto;
+}
+
+.lecture h2{
+	text-align: center;
+	margin-bottom: 20px;
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.9em;
+}
+
+.canvas{
+	width: 100%;
+	height: auto;
+	padding: 20px 20px;
+	background: white;
+	text-align: justify;
+	font-family: 'ABeeZee';
+	font-size: 1.8em;
+	line-height: 2.4em;
+
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.canvas > p {
+	margin: 20px 0px;
+}
+
+.canvas > p:first-child {
+	margin-top: 0px;
+}
+
+.canvas > p:last-child {
+	margin-bottom: 0px;
+}
+
+
+
+
+/* 02-4 Aside */
+aside{
+	position: fixed;
+	right: 3%;
+	top: 30%;
+	width: 90px;
+}
+
+aside > div > div {
+	width: 90px;
+	height: 90px;
+	border: 6px solid #0E9AA7;
+	border-radius: 50%;
+	position: relative;
+}
+
+aside > div > p {
+	text-align: center;
+	font-family: 'Quicksand';
+	font-size: 1.2em;
+}
+
+.number{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.lastWord {
+	width: 140px;
+	border: 2px solid #4A4E4D;
+	margin-left: -25px;
+	margin-bottom: 20px;
+
+	/*-webkit-border-top-left-radius:7px;
+	-moz-border-top-left-radius:7px;
+	border-top-left-radius: 7px;
+	-webkit-border-top-right-radius:7px;
+	-moz-border-top-right-radius:7px;
+	border-top-right-radius: 7px;*/
+
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+	border-radius: 7px;
+}
+
+.lastWord p:first-child {
+	color: white;
+	background: #4A4E4D;
+	padding: 5px 0;
+	text-align: center;
+	font-family: 'Quicksand';
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	font-size: 1.4em;
+
+	-webkit-border-top-left-radius:4px;
+	-moz-border-top-left-radius:4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-top-right-radius:4px;
+	border-top-right-radius: 4px;
+}
+
+.lastWord p:last-child {
+	padding: 5px 0;
+	text-align: center;
+	font-family: 'ABeeZee';
+	font-style: italic;
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	font-size: 1.2em;
+}
+
+
+/* 02-6 questionnaire difficulty */
+
+.difficulty{
+	width: 75%;
+	height: auto;
+	margin: 60px auto;
+}
+
+.difficulty > div > p{
+	font-family: 'Quicksand';
+	padding-top: 20px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+}
+
+.difficulty > div > p:first-child{
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+.difficulty > div > p:last-child{
+	font-size: 1.4em;
+}
+
+.difficulty select{
+	border: 3px solid #4A4E4D;
+	padding: 3px;
+}
+
+.difficulty form button {
+	margin-left: 40px;
+	padding-bottom: 1px;
+	font-family: 'Quicksand';
+	font-weight: bold;
+	width: 120px;
+	color: #F6CD61;
+	border: 3px solid #F6CD61;
+	background: none;
+	font-size: 1.2em;
+}
+
+.difficulty form button:hover, .difficulty form button:active, .difficulty form button:focus {
+  color: white;
+  background: #F6CD61;
+  outline: none;
+}
+
+
+
+
+
+
+/** 03 CSS pour la page Tableau de bord */
+/* 03-1 Code général */
+#tableau {
+	width: 90%;
+	margin: 0 auto;
+}
+
+/* choix de la langue */
+.langue {
+	width: 410px;
+	margin: 20px auto;
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.langue > p{
+	text-align: right;
+	line-height: 1.8em;
+}
+
+p.col-xs-6:nth-child(2) {
+	text-align: left;
+}
+
+.langue > form > select {
+	border-radius: 2px;
+	border: 2px solid #4A4E4D;
+}
+
+/* 03-2 CSS des différentes DIV */
+#infos, #stats, #cal, #graph {
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+
+	background: white;
+	font-family: 'ABeeZee';
+}
+
+.rowFirst {
+	margin: 0 auto;
+	width: 80%;
+}
+
+#infos, #cal {
+	height: 300px;
+	width: 400px;
+	margin: 20px auto;
+}
+
+#stats {
+	height: 620px;
+	width: 400px;
+	margin: 20px auto;
+}
+
+#graph {
+	height: 300px;
+	width: 800px;
+	margin: 40px auto;
+}
+
+
+#tableau div h3{
+	color: white;
+	background: #4A4E4D;
+	padding: 20px 0;
+	text-align: center;
+	font-family: 'Quicksand';
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	font-size: 1.5em;
+
+	-webkit-border-top-left-radius:4px;
+	-moz-border-top-left-radius:4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-top-right-radius:4px;
+	border-top-right-radius: 4px;
+}
+
+.block {
+	margin: 20px;
+}
+
+/* informations personnelles */
+.img-infos-pers > div {
+	width: 90px;
+	height: 90px;
+	margin: 0 auto;
+	border: 2px solid #efefef;
+	overflow: hidden;
+	border-radius: 50%;
+	position: relative;
+}
+
+.img-infos-pers > div > img {
+	width: 110px;
+	position: absolute;
+	top: -10px;
+	left: -20px;
+}
+
+.donneePerso {
+	margin-top: 5px;
+}
+
+.block button {
+	display: block;
+	margin: 30px auto 0px auto;
+	font-family: 'Quicksand';
+	font-weight: bold;
+	width: 120px;
+	color: #F6CD61;
+	border: 3px solid #F6CD61;
+	background: none;
+	font-size: 1.2em;
+}
+
+.block button:hover, .block button:active, .block button:focus {
+  color: white;
+  background: #F6CD61;
+  outline: none;
+}
+
+
+/* calendar */
+
+#cal .block {
+	margin: 0;
+}
+
+#datepicker {
+  max-width: 400px;
+  height: 280px;
+  width: 100%;
+}
+
+#datepicker div, #datepicker label , #datepicker text {
+  font-size: 1em !important;
+}
+
+#datepicker .d-legend {
+	background: none !important;
+	transform: translateY(10px);
+}
+
+#datepicker .d-week, #datepicker .d-weekdays {
+	height: 20px !important;
+	margin-bottom: 10px;
+}
+
+#datepicker .d-week > div > p {
+	margin: 1px 0 !important;
+}
+
+
+
+
+/* statistiques */
+
+#stats .block {
+	margin-left: 40px;
+}
+
+.number-blue, .number-yellow, .number-grey{
+	display: inline-block;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	margin: 10px 25px ;
+	text-align: center;
+}
+
+#stats > .block > div {
+	display: inline-block;
+	position: relative;
+	width: 320px;
+}
+
+#stats > .block > div > div {
+	position: relative;
+}
+
+#stats .block p {
+	display: inline-block;
+	width: 220px;
+	position: absolute;
+	top: 48%;
+	left: 75%;
+	transform: translate(-50%,-50%);
+}
+
+.num {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+	width: 75px;
+	font-size: 130%;
+}
+
+.number-blue{
+	color: #0E9AA7;
+	border: 3px solid #0E9AA7;
+}
+
+.number-yellow{
+	color: #F6CD61;
+	border: 3px solid #F6CD61;
+}
+
+.number-grey{
+	color: #4A4E4D;
+	border: 3px solid #4A4E4D;
+}
+
+
+
+
+
+/** 04 CSS pour la page Textes */
+
+
+.glyphicon { margin-right:5px; }
+.thumbnail
+{
+	height: 270px;
+	max-width: 350px;
+    margin-bottom: 60px;
+    padding: 0px;
+    border: none;
+
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+
+	background: white;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+	/*height: 200px;
+    margin: 10px;
+    text-align: justify;
+    text-overflow: ellipsis;*/
+
+    display: block;
+	/* Fallback for non-webkit */
+	display: -webkit-box;
+	max-width: 320px;
+	height: 190px;
+	/* Fallback for non-webkit */
+	margin: 10px;
+	font-size: 1em;
+	line-height: 1.4;
+	-webkit-line-clamp: 10;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.texteConteneur > h2 {
+	text-align: center;
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.8em;
+}
+
+.texteConteneur > p {
+	text-align: center;
+	font-family: 'ABeeZee';
+	font-style: italic;
+	font-size: 1em;
+}
+
+
+#textes {
+	width: 80%;
+	margin: 30px auto;
+}
+
+#textes h3{
+	color: white;
+	background: #4A4E4D;
+	padding: 15px 0;
+	text-align: center;
+	font-family: 'Quicksand';
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	font-size: 1.5em;
+
+	-webkit-border-top-left-radius:4px;
+	-moz-border-top-left-radius:4px;
+	border-top-left-radius: 4px;
+	-webkit-border-top-right-radius:4px;
+	-moz-border-top-right-radius:4px;
+	border-top-right-radius: 4px;
+}
+
+.thumbnail > div {
+	margin-top: 25px;
+}
+
+.thumbnail > div button {
+
+}
+.thumbnail > div button {
+	font-family: 'Quicksand';
+	font-weight: bold;
+	width: 50px;
+	color: #F6CD61;
+	border: 3px solid #F6CD61;
+	background: none;
+	font-size: 1em;
+}
+
+.thumbnail > div button:hover, .thumbnail > div button:active, .thumbnail > div button:focus {
+  color: white;
+  background: #F6CD61;
+  outline: none;
+}
+
+.thumbnail > div p {
+	margin-top: 5px;
+	font-family: 'ABeeZee';
+	font-style: italic;
+	font-size: 1em;
+}
+
+
+
+
+/** 05 CSS pour la page Une question ? */
+
+.titreQuestion {
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.6em;
+	text-align: center;
+	margin-top: 10%;
+	margin-bottom: 80px;
+}
+
+.contact {
+	width: 60%;
+	margin: 0 auto;
+}
+
+#contact{
+    padding:10px 0 10px;
+  }
+
+  .contact-text{
+    margin:45px auto;
+  }
+
+  .mail-message-area{
+    width:100%;
+    padding:0 15px;
+  }
+
+  .mail-message{
+    width: 100%;
+    background:rgba(255,255,255, 0.8) !important;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    transition: all 0.7s;
+    margin:0 auto;
+    border-radius: 0;
+  }
+
+  .not-visible-message{
+    height:0px;
+    opacity: 0;
+  }
+
+  .visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+  }
+
+/* Input Styles */
+
+  .form{
+    width: 100%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  .form:hover{
+    border:1px solid #F6CD61;
+  }
+
+  .form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #F6CD61;
+  }
+
+  .textarea{
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+  }
+  
+
+/* Send Button Styles */
+
+  .form-btn{
+    width:180px;
+    display: block;
+    height: auto;
+    padding:15px;
+    color:#fff;
+    background:#8BC3A3;
+    border:none;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+
+    font-family: 'Quicksand';
+	font-weight: bold;
+	color: #F6CD61;
+	border: 3px solid #F6CD61;
+	background: none;
+	font-size: 1.2em;
+    text-align:center;
+
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+  }
+
+  .form-btn:hover{
+    background:#F6CD61;
+    color:white;
+	outline: none;
+  }
+
+  .form-btn:active{
+    opacity: 0.9;
+  }
+
+input {
+    position: relative;
+    z-index: 9999;
+}
+
+
+
+/** 06 CSS pour la page Twitter */
+
+
+.titreTwitter {
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.6em;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 40px;
+
+}
+
+
+.wrap-twitter {
+	width: 600px;
+	margin: 0 auto;
+}
+
+
+
+/** 07 CSS pour la page Mentions légales */
+
+
+.titreML {
+	font-family: 'Quicksand';
+	font-weight: bold;
+	font-size: 1.6em;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 40px;
+
+}
+
+
+.ctn-ML {
+	width: 70%;
+	margin: 0 auto;
+	font-family: 'ABeeZee';
+	text-align: justify;
+}
+
+

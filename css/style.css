@@ -1027,10 +1027,10 @@
 		-webkit-transform: translateY(0px);
 	        	transform: translateY(0px);
 
-		animation: elevateOneIt 1s ease-out 2s both;
+		animation: elevateOneItTwo 1s ease-out 2s both;
 	}
 
-	@keyframes elevateOneIt {
+	@keyframes elevateOneItTwo {
 	  from {
 	  	-webkit-transform: translateY(0px);
 	        	transform: translateY(0px);

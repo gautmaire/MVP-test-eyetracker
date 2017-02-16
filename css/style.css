@@ -112,7 +112,9 @@
 
 /** step-2 **/
 #step-2 ul{
-	padding-left: 25%;
+	width: 350px;
+	margin: 0 auto;
+	margin-top: 120px;
 }
 
 #step-2 ul li{
@@ -122,13 +124,54 @@
 	line-height: 2em;
 }
 
+#step-2 ul li:nth-child(1){
+	opacity: 0;
+
+	transition: all 1s ease 1s;
+}
+#step-2.active ul li:nth-child(1){
+	opacity: 1;
+}
+
+#step-2 ul li:nth-child(2){
+	opacity: 0;
+
+	transition: all 1s ease 2s;
+}
+#step-2.active ul li:nth-child(2){
+	opacity: 1;
+}
+
+#step-2 ul li:nth-child(3){
+	opacity: 0;
+
+	transition: all 1s ease 3s;
+}
+#step-2.active ul li:nth-child(3){
+	opacity: 1;
+}
+
+#step-2 ul li:nth-child(4){
+	opacity: 0;
+
+	transition: all 1s ease 4s;
+}
+#step-2.active ul li:nth-child(4){
+	opacity: 1;
+}
+
+
+
+
 
 /** step-3 **/
 #step-3 div{
 	float: left;
 	display: inline-block;
 	width: 30%;
-	margin-left: 3%;
+	/*margin-left: 3%;*/
+	margin-left: 20px;
+	margin-top: 50px;
 }
 
 #step-3 div img{
@@ -143,7 +186,38 @@
 }
 
 
+#step-3 div:nth-child(2) {
+	opacity: 0;
+
+	transition: all 1s ease 1s;
+}
+#step-3.active div:nth-child(2) {
+	opacity: 1;
+}
+
+#step-3 div:nth-child(3) {
+	opacity: 0;
+
+	transition: all 1s ease 2s;
+}
+#step-3.active div:nth-child(3) {
+	opacity: 1;
+}
+
+#step-3 div:nth-child(4) {
+	opacity: 0;
+
+	transition: all 1s ease 3s;
+}
+#step-3.active div:nth-child(4) {
+	opacity: 1;
+}
+
+
+
+
 /** step-4 **/
+
 #step-4 p{
 	text-align: center;
 	margin-left: 0;
@@ -155,41 +229,163 @@
 	margin-left: 22%;
 	text-align: center;
 	border-radius: 50%;
+	margin-top: 40px;
 
 }
+
+#step-4 > div {
+	position: relative;
+	top: 1000px;
+	opacity: 0;
+
+	transition: all 1s ease 1s;
+}
+#step-4.active > div {
+	top: 0px;
+	opacity: 1;
+}
+
+
+
+
+
 
 /** step-5 **/
 #step-5 img{
 	width: 90%;
 	margin-left: 4%;
 	margin-top: 10%;
+	opacity: 0;
+
+	transition: opacity 1s ease 1s;
+}
+#step-5.active img{
+	opacity: 1;
 }
 
 /** step-6 **/
-#step-6 img{
+
+#step-6 > img:nth-child(2){
+	opacity: 0;
+	width: 10%;
+	/*margin-left: 4%;
+	margin-top: 15%;*/
+	margin: 250px auto;
+	display: block;
+
+	transition: all 1s ease 1s;
+}
+#step-6.active img:nth-child(2){
 	width: 90%;
-	margin-left: 4%;
-	margin-top: 15%;
+	opacity: 1;
 }
 
-/** step-8 **/
-#step-8 img{
+
+
+/** step-7 **/
+.demo > img:nth-child(2){
+	width: 100%; 
+	margin: 0 auto;
+	display: block;
+	border: 2px solid #1c1c1c;
+}
+
+
+
+
+/** step-12 **/ 
+
+#step-12 p{
+	text-align: center;
+	margin-left: 0;
+}
+
+#step-12 img{
+	width: 57%;
+	height: auto;
+	margin-left: 22%;
+	text-align: center;
+	margin-top: 40px;
+
+}
+
+#step-12 > div {
+	position: relative;
+	top: 1000px;
+	opacity: 0;
+
+	transition: all 1s ease 1s;
+}
+#step-12.active > div {
+	top: 0px;
+	opacity: 1;
+}
+
+
+
+/** step-13 **/
+#step-13 > p:nth-child(2) {
+	text-align: center;
+	margin-left: 0px;
+	margin-top: 100px;
+}
+
+#step-13 img{
 	width: 20%; 
 	height: auto;
 	margin-left: 10%;
 }
 
-/** step-9 **/
-#step-9 img{
+
+#step-13 img:nth-child(3) {
+	opacity: 0;
+
+	transition: all 1s ease 1s;
+}
+#step-13.active img:nth-child(3) {
+	opacity: 1;
+}
+
+#step-13 img:nth-child(4) {
+	opacity: 0;
+
+	transition: all 1s ease 2s;
+}
+#step-13.active img:nth-child(4) {
+	opacity: 1;
+}
+
+#step-13 img:nth-child(5) {
+	opacity: 0;
+
+	transition: all 1s ease 3s;
+}
+#step-13.active img:nth-child(5) {
+	opacity: 1;
+}
+
+
+
+/** step-14 **/
+
+#step-14 h2 {
+	margin-bottom: 200px;
+}
+
+#step-14 img{
 	width: 20%; 
 	height: auto;
 	margin-left: 10%;
 }
 
-#step-9 > p:nth-child(5){
+#step-14 > img:nth-child(3) {
+	margin-left: 12%;
+}
+
+#step-14 > p:nth-child(4){
 	display: block;
     width: 20%;
-    /* margin-left: 10%; */
+    margin-right: 5%;
     float: right;
     color: black;
     font-family: "Quicksand";
@@ -197,13 +393,98 @@
     font-weight: bold;
 }
 
-/** step-10 **/ 
-#step-10 img{
-	margin-left: 25%;
+#step-14 img:nth-child(2) {
+	opacity: 0;
+
+	transition: all 1s ease 1s;
+}
+#step-14.active img:nth-child(2) {
+	opacity: 1;
 }
 
-/** step-11 **/
-#step-11 > img{
+#step-14 img:nth-child(3) {
+	opacity: 0;
+
+	transition: all 1s ease 2s;
+}
+#step-14.active img:nth-child(3) {
+	opacity: 1;
+}
+
+#step-14 p:nth-child(4) {
+	opacity: 0;
+
+	transition: all 1s ease 3s;
+}
+#step-14.active p:nth-child(4) {
+	opacity: 1;
+}
+
+
+
+
+/** step-15 **/
+#step-15 > p:nth-child(2) {
+	text-align: center;
+	margin-left: 0px;
+	margin-top: 100px;
+	font-family: "Quicksand";
+	font-size: 1.4em;
+	font-weight: bold;
+	opacity: 0;
+
+	transition: all 1s ease 1s;
+}
+#step-15.active > p:nth-child(2) {
+	opacity: 1;
+}
+
+#step-15 img{
+	width: 20%; 
+	height: auto;
+	margin-left: 10%;
+	vertical-align: top;
+}
+
+
+#step-15 img:nth-child(3) {
+	opacity: 0;
+
+	transition: all 1s ease 2s;
+}
+#step-15.active img:nth-child(3) {
+	opacity: 1;
+}
+
+#step-15 img:nth-child(4) {
+	opacity: 0;
+	margin-top: 20px;
+
+	transition: all 1s ease 3s;
+}
+#step-15.active img:nth-child(4) {
+	opacity: 1;
+}
+
+#step-15 img:nth-child(5) {
+	opacity: 0;
+	margin-top: 80px;
+
+	transition: all 1s ease 4s;
+}
+#step-15.active img:nth-child(5) {
+	opacity: 1;
+}
+
+
+
+
+
+
+
+
+/** step-16 **/
+#step-16 > img{
 	width: 15%;
 	display: block;
 	position: absolute;
@@ -211,9 +492,13 @@
 	top: 35%;
 }
 
-/** step-12 **/
-#step-12 img{
-	width: 80%;
+/** step-17 **/
+#step-17 img{
+	/*width: 80%;
+	height: auto;
+	margin-left: 10%;*/
+
+	width: 60%; 
 	height: auto;
 	margin-left: 10%;
 }

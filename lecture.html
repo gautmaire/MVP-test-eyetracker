@@ -1,96 +1,110 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Lecture</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lecture</title>
 
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/users.css">
-	</head>
-	<body>
-		<header>
-			<button class="buttonBurger">
-			    <span class="buttonBurger__top"></span>
-			    <span class="buttonBurger__middle"></span>
-			    <span class="buttonBurger__bottom"></span>
-			</button>
-			<div class="menu">
-				<div>
-					<img src="img/img-profil.jpg" alt="image profil">
-				</div>
-				<h3>Gautier Maire</h3>
-				<nav>
-					<ul>
-						<li><a id="us-tab-bord" href="tableau-bord.html">Tableau de bord</a></li>
-						<li><a id="us-textes" href="textes.html">Textes</a></li>
-						<li><a id="us-question" href="question.html">Une question ?</a></li>
-						<li><a id="us-twitter" href="twitter.html">Twitter</a></li>
-						<li><a id="us-mentions-legales" href="mentions-legales.html">Mentions légales</a></li>
-					</ul>
-				</nav>
-				<p>See To Learn © 2017</p>
-			</div>
-			<img src="img/logo.png" alt="logo_See2Learn" />
-			<a href="index.html"><button class="signOut">Déconnexion</button></a>
-		</header>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/users.css">
 
-		<section class="lecture">
-			<h2>La voiture volante d’Airbus</h2>
-			<div class="canvas">
-				<p>Le constructeur aéronautique Airbus semble vouloir offrir le rêve d’Icare à tout un chacun. L’entreprise planche sur un projet d’engin volant électrique et une voiture volante capable de transporter un passager au sein des villes de demain, devrait voir le jour d’ici la fin de l’année.
-				</p>
+    </head>
+    <body>
+        <header>
+            <button class="buttonBurger">
+                <span class="buttonBurger__top"></span>
+                <span class="buttonBurger__middle"></span>
+                <span class="buttonBurger__bottom"></span>
+            </button>
+            <div class="menu">
+                <div>
+                    <img src="img/img-profil.jpg" alt="image profil">
+                </div>
+                <h3>Gautier Maire</h3>
+                <nav>
+                    <ul>
+                        <li><a id="us-tab-bord" href="tableau-bord.html">Tableau de bord</a></li>
+                        <li><a id="us-textes" href="textes.html">Textes</a></li>
+                        <li><a id="us-question" href="question.html">Une question ?</a></li>
+                        <li><a id="us-twitter" href="twitter.html">Twitter</a></li>
+                        <li><a id="us-mentions-legales" href="mentions-legales.html">Mentions légales</a></li>
+                    </ul>
+                </nav>
+                <p>See To Learn © 2017</p>
+            </div>
+            <img src="img/logo.png" alt="logo_See2Learn" />
+            <a href="index.html"><button class="signOut">Déconnexion</button></a>
+        </header>
+        
+        <!-- MENU PROPOSANT LES DIFFERENTS OPTIONS DE LECTURES --> 
+        <span>
+        <input id="text-size-input" type="number" style="text-align:right; width:50px" min="5" max="128" step="0.5" oninput="setFontSize(this.value)"/>
+        <input id ="boundingRect" type="button" value="Show boundingRect : OFF" onclick="triggerDisplayBoundingBox(this)"/>
+        <label><input type='checkbox' onclick='handleCheckBox(this);'></label>
+        <input id="viewRangeModeButton" type="button" value="viewRange mode : OFF" onclick="triggerViewRangeMode()"/>
+        <input id="readModeButton" type="button" value="Commencer la lecture" onclick="triggerReadMode()"/>
+        <input id="readmode-time" type="number" style="text-align:right; width:50px" value="85" min="1" step="1" oninput="setReadModeTime(this.value)"/>
+        <input id="CursorMeanBufferSize" type="number" style="text-align:right; width:50px" value="60" min="1" step="1" oninput="setCursorMeanBufferSize(this.value)"/>
+        </span>
 
-				<p>Aliquam ultrices luctus purus, quis ultrices sem finibus ut. Maecenas aliquet interdum lacinia. Praesent placerat dignissim dui, a porttitor lorem porta quis. Integer tincidunt eleifend eros ac sollicitudin. Donec ullamcorper posuere condimentum. Vestibulum gravida ultrices blandit. Etiam et sollicitudin metus. Nam at tincidunt metus. Cras aliquet nibh at imperdiet volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur finibus viverra. Sed at ipsum et turpis vehicula sollicitudin. Mauris sit amet libero eu sem fermentum aliquet sit amet vitae tortor. Etiam efficitur ullamcorper augue at consectetur. 
-				</p>
+        <section class="lecture">
+            <div id="dummy" style="display:none;"></div>
+            <h2>Harry Potter : The Philosopher's Stone</h2>
+            <div id="words" style="white-space : pre-wrap" spellcheck="false" onfocus="unspanText()" contenteditable="false">The most evil and powerful dark wizard in history, Lord Voldemort, murdered married couple James and Lily Potter but mysteriously disappeared after failing to kill their infant son, Harry. 
+            While the wizarding world celebrates Voldemort's apparent downfall, Professor Dumbledore, Professor McGonagall and half-giant Rubeus Hagrid place the one-year-old orphan in the care of his surly and cold Muggle uncle and aunt, Vernon and Petunia Dursley and their spoilt and bullying son, Dudley.
+            </div>
 
-				<p>Le constructeur aéronautique Airbus semble vouloir offrir le rêve d’Icare à tout un chacun. L’entreprise planche sur un projet d’engin volant électrique et une voiture volante capable de transporter un passager au sein des villes de demain, devrait voir le jour d’ici la fin de l’année.
-				</p>
+        <ul id="right"></ul>
+        <ul id="left"></ul>
+    
+        <div id="cursorL">L</div>
+        <div id="cursorR">R</div>
+        <div id="cursor">X</div>
 
-				<p>Aliquam ultrices luctus purus, quis ultrices sem finibus ut. Maecenas aliquet interdum lacinia. Praesent placerat dignissim dui, a porttitor lorem porta quis. Integer tincidunt eleifend eros ac sollicitudin. Donec ullamcorper posuere condimentum. Vestibulum gravida ultrices blandit. Etiam et sollicitudin metus. Nam at tincidunt metus. Cras aliquet nibh at imperdiet volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur finibus viverra. Sed at ipsum et turpis vehicula sollicitudin. Mauris sit amet libero eu sem fermentum aliquet sit amet vitae tortor. Etiam efficitur ullamcorper augue at consectetur. 
-				</p>
-			</div>			
-		</section>
-		<aside>
-			<div class="lastWord">
-				<p class="">Dernier mot lu</p>
-				<p>Constructeur</p>
-			</div>
-			<div>
-				<div>
-					<p class="number">42</p>
-				</div>
-				<p>Mots lus</p>
-			</div>
-			<div>
-				<div>
-					<p class="number">26s</p>
-				</div>
-				<p>Temps de lecture</p>
-			</div>
-		</aside>
+        <script src="/socket.io/socket.io.js"></script>
 
-		<section class="difficulty row">
-			<div class="col-xs-8 col-md-6 col-lg-5">
-				<p class="">Avez-vous trouver ce texte difficile ?</p>
-				<p class="">(1 si vous avez tout compris, 4 si vous avez rien compris)</p>
-			</div>
-			<form class="evaluation col-xs-4 col-md-6 col-lg-7">
-				<select>
-					<option>-</option>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-				</select>
-				<button>Terminer</button>
-			</form>
-		</section>
+        </section>
+        <aside>
+            <div class="lastWord">
+                <p class="">Dernier mot lu</p>
+                <p>...</p>
+            </div>
+            <div>
+                <div>
+                    <p id="compteurMot" class="number">0</p>
+                </div>
+                <p>Mots lus</p>
+            </div>
+            <div>
+                <div>
+                    <p id="compteurNbSecondes" class="number">0s</p>
+                </div>
+                <p>Temps de lecture</p>
+            </div>
+        </aside>
 
+        <section class="difficulty row">
+            <div class="col-xs-8 col-md-6 col-lg-5">
+                <p class="">Avez-vous trouver ce texte difficile ?</p>
+                <p class="">(1 si vous avez tout compris, 4 si vous avez rien compris)</p>
+            </div>
+            <form class="evaluation col-xs-4 col-md-6 col-lg-7">
+                <select>
+                    <option>-</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+                <button>Terminer</button>
+            </form>
+        </section> 
+        <script type="text/javascript" src="js/jquery.js"></script> 
+        <script type="text/javascript" src="js/main.js"></script> 
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
+        <script type="text/javascript" src="js/lecture.js">
 
-		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
+        </script>
 	</body>
 </html>

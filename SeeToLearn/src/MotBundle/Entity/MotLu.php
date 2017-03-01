@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\User;
 use MotBundle\Entity\MotDico;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * MotLu
@@ -13,7 +14,7 @@ use MotBundle\Entity\MotDico;
  * @ORM\Table(name="mot_lu")
  * @ORM\Entity(repositoryClass="MotBundle\Repository\MotLuRepository")
  */
-class MotLu
+class MotLu extends EntityRepository
 {
     /**
      * @var int
@@ -44,11 +45,6 @@ class MotLu
      * @ORM\Column(name="poids", type="integer")
      */
     private $poids;
-
-    /**
-     * @ORM\OneToOne(targetEntity="MotBundle\Entity\MotDico", cascade={"persist"})
-     */
-    private $motdico;
 
     /**
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", cascade={"persist"})
@@ -157,17 +153,6 @@ class MotLu
     public function getUser()
     {
         return $this->user;
-    }
-
-    public function setMotdico(MotDico $motdico = null)
-    {
-        $this->motdico = $motdico;
-    }
-
-
-    public function getMotdico()
-    {
-        return $this->motdico;
     }
 }
 

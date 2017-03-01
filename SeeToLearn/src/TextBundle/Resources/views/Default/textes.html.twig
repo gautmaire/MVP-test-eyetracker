@@ -42,22 +42,16 @@
             <h2>Propositions de textes</h2>
             <p>Grâce aux données que nous récoltons lors de votre lecture, nous vous proposons les textes les plus adaptés pour votre apprentissage.</p>
             <div id="textes" class="row list-group">
-                {% for text in texts %}
-                    {% if ((text.langue == app.user.langue) and (text.niveau == app.user.niveau)) %}
-                        {% set lu = "N" %}
-                        {% for user in text.user %}
-                            {% if user.id == app.user.id %}
-                                {% set lu = "O" %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if (lu == "N") %}
+                {% if (app.user.nombretextelu == 0) %}
+                    {% for text in texts %}
+                        {% if ((text.langue == app.user.langue) and (text.niveau == app.user.niveau)) %}
                             <div class="item  col-xs-4 col-lg-4">
                                 <div class="thumbnail">
                                     <h3> {{ text.titre }} </h3>
                                     <p class="group inner list-group-item-text">{{ text.resume }}</p>
                                     <div class="row">
                                         <div class="col-xs-12 col-md-9">
-                                            <p>31% de nouveaux mots</p>
+                                            <p>100% de nouveaux mots</p>
                                         </div>
                                         <div class="col-xs-12 col-md-3">
                                             <a class="" href="{{ path('lecture', {id: text.id}) }}"><button>See</button></a>
@@ -66,10 +60,64 @@
                                 </div>
                             </div>
                         {% endif %}
-                    {% endif %}
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    {% set id_text_with_less_common_words = 0 %}
+                    {% set text_with_less_common_words = all_words|length %}
+                    {% set word_read = [] %}
+                    {% set tmp = "" %}
+                    {% for text in texts %}
+                        {% if ((text.langue == app.user.langue) and (text.niveau == app.user.niveau)) %}
+                            {% set current_user_read_it = 'N' %}
+                            {% for user in text.user %}
+                                {% if (user.id == app.user.id) %}
+                                    {% set current_user_read_it = 'Y' %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if current_user_read_it == 'N' %}
+                                {% set current_text = text.contenu|split(" ") %}
+                                {% for word_read_by_user in words_read_by_user %}
+                                    {% for word in current_text %}
+                                        {% if word_read_by_user.valeur == word %}
+                                            {% for word_dico in all_words %}
+                                                {% if word_read_by_user.valeur == word_dico.valeur %}
+                                                    {% if word_read_by_user.valeur not in word_read %}
+                                                        {% set word_read = word_read|merge([word_read_by_user.valeur]) %}
+                                                        {% set tmp = tmp + 1 %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                                {% if tmp < text_with_less_common_words %}
+                                    {% set text_with_less_common_word = tmp %}
+                                    {% set id_text_with_less_common_words = text.id %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                        {% set tmp = 0 %}
+                    {% endfor %}
+                    {% for text in texts %}
+                        {% if text.id == id_text_with_less_common_words %}
+                            <div class="item  col-xs-4 col-lg-4">
+                                <div class="thumbnail">
+                                    <h3> {{ text.titre }} </h3>
+                                    <p class="group inner list-group-item-text">{{ text.resume }}</p>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-9">
+                                            <p> {{ (100 - ((word_read|length * 100) / all_words|length))|round }} % de nouveaux mots</p>
+                                        </div>
+                                        <div class="col-xs-12 col-md-3">
+                                            <a class="" href="{{ path('lecture', {id: text.id}) }}"><button>See</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
-
             <h2>Textes déjà lus</h2>
             <div id="textes" class="row list-group">
                 {% for text in texts %}

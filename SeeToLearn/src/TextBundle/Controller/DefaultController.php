@@ -15,9 +15,16 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('TextBundle:Text');
+        $repo1 = $em->getRepository('MotBundle:MotLu');
+        $repo2 = $em->getRepository('MotBundle:MotDico');
         $langue = $request->request->get('langue');
         return $this->render('TextBundle:Default:textes.html.twig',
-            array('texts' => $repo->findAll(), 'langue' => $langue)
+            array(
+                'texts' => $repo->findAll(), 
+                'langue' => $langue, 
+                'words_read_by_user' => $repo1->findAll(), 
+                'all_words' => $repo2->findAll()
+            )
         );
     }
 
